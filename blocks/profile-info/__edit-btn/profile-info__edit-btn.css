@@ -1,0 +1,20 @@
+.profile-info__edit-btn {
+  position: absolute;
+  top: 16px;
+  right: 0;
+  width: 24px;
+  height: 24px;
+  background-color: #000;
+  background-image: url(../../../images/profile-info-edit-btn.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  transition: background-image .3s;
+}
+
+.profile-info__edit-btn:hover {
+  background-image: url(../../../images/profile-info-edit-btn-hover.svg);
+  transition: background-image .3s;
+}
