@@ -37,3 +37,8 @@
 @import url(../blocks/photo/__caption/photo__caption.css);
 @import url(../blocks/photo/__like-btn/photo__like-btn.css);
 /* end:photo */
+
+/* begin:footer */
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
+/* end:footer */
