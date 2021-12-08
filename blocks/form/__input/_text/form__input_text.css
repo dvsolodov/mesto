@@ -1,0 +1,12 @@
+.form__input_text {
+  height: 27px;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, .2);
+  outline: none;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  vertical-align: top;
+  box-sizing: border-box;
+}
