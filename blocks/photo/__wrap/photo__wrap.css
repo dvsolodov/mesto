@@ -1,0 +1,8 @@
+.photo__wrap {
+  min-height: 80px;
+  margin: 0;
+  padding: 0 14px 0 21px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

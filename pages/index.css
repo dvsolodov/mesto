@@ -25,3 +25,15 @@
 @import url(../blocks/profile-info/__status/profile-info__status.css);
 @import url(../blocks/profile-info/__edit-btn/profile-info__edit-btn.css);
 /* end:profile-info */
+
+/* begin:photos */
+@import url(../blocks/photos/photos.css);
+/* end:photos */
+
+/* begin:photo */
+@import url(../blocks/photo/photo.css);
+@import url(../blocks/photo/__img/photo__img.css);
+@import url(../blocks/photo/__wrap/photo__wrap.css);
+@import url(../blocks/photo/__caption/photo__caption.css);
+@import url(../blocks/photo/__like-btn/photo__like-btn.css);
+/* end:photo */
