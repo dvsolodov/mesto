@@ -20,9 +20,9 @@
     <section class="profile">
       <img class="profile__avatar" src="images/profile-avatar.jpg" alt="аватар">
       <div class="profile-info">
-        <h1 class="profile-info__full-name">Жак-Ив Кусто</h1>
-        <p class="profile-info__status">Исследователь океана</p>
-        <button class="profile-info__edit-btn"></button>
+        <h1 class="profile-info__name" id="profile-info-name">Жак-Ив Кусто</h1>
+        <p class="profile-info__about" id="profile-info-about">Исследователь океана</p>
+        <button class="profile-info__edit-btn" id="profile-info-edit-btn"></button>
       </div><!--end:profile-info-->
       <button class="profile__add-btn"></button>
     </section><!--end:profile-->
@@ -81,16 +81,18 @@
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
 
-    <div class="popup popup_open">
-      <form class="form" action="" method="POST">
+    <div class="popup" id="edit-popup">
+      <form class="form" action="" method="POST" id="form">
         <h2 class="form__title">Редактировать профиль</h2>
-        <input class="form__input form__input_text" type="text" name="fullName">
-        <input class="form__input form__input_text" type="text" name="status">
-        <input class="form__input form__input_submit" type="submit" value="Сохранить">
-        <button class="form__close-btn"></button>
+        <input class="form__input form__input_text" type="text" name="name" id="input-name">
+        <input class="form__input form__input_text" type="text" name="about" id="input-about">
+        <input class="form__input form__input_submit" type="submit" value="Сохранить" id="input-submit">
+        <button class="form__close-btn" id="btn-close-form"></button>
       </form>
     </div><!--end:popup-->
 
   </div><!--end:container-->
+
+  <script src="blocks/profile-info/profile-info.js"></script>
 </body>
 </html>

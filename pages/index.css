@@ -22,7 +22,6 @@
 /* begin:popup */
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_open/popup_open.css);
-@import url(../blocks/popup/__close-btn/popup__close-btn.css);
 /* end:popup */
 
 /* begin:form */
@@ -36,8 +35,8 @@
 
 /* begin:profile-info */
 @import url(../blocks/profile-info/profile-info.css);
-@import url(../blocks/profile-info/__full-name/profile-info__full-name.css);
-@import url(../blocks/profile-info/__status/profile-info__status.css);
+@import url(../blocks/profile-info/__name/profile-info__name.css);
+@import url(../blocks/profile-info/__about/profile-info__about.css);
 @import url(../blocks/profile-info/__edit-btn/profile-info__edit-btn.css);
 /* end:profile-info */
 
