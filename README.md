@@ -42,6 +42,6 @@
 ## **Ссылки**
 
 * [Ссылка на репозиторий проекта](https://github.com/dvsolodov/mesto)
-* [Ссылка на GitPages](https://dvsolodov.github.io/russian-travel/)
+* [Ссылка на GitPages](https://dvsolodov.github.io/mesto/)
 
 
