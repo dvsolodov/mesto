@@ -1,9 +1,9 @@
 let profileInfoEditBtn = document.querySelector('#profile-info-edit-btn');
 let editPopup = document.querySelector('#edit-popup');
-let form = document.querySelector('#form');
-let btnCloseForm = form.querySelector('#btn-close-form');
-let nameInput = form.querySelector('#input-name');
-let aboutInput = form.querySelector('#input-about');
+let popupContainer = document.querySelector('#popup-container');
+let btnClosePopup = popupContainer.querySelector('#btn-close-popup');
+let nameInput = popupContainer.querySelector('#input-name');
+let aboutInput = popupContainer.querySelector('#input-about');
 let profileInfoName = document.querySelector('#profile-info-name');
 let profileInfoAbout = document.querySelector('#profile-info-about');
 
@@ -13,13 +13,13 @@ function openEditPopup(evt) {
   nameInput.value = profileInfoName.textContent;
   aboutInput.value = profileInfoAbout.textContent;
 
-  editPopup.classList.toggle('popup_open');
+  editPopup.classList.toggle('popup_opened');
 }
 
 function closeEditPopup(evt) {
   evt.preventDefault();
 
-  editPopup.classList.toggle('popup_open');
+  editPopup.classList.toggle('popup_opened');
 }
 
 function formSubmitHandler(evt) {
@@ -31,6 +31,6 @@ function formSubmitHandler(evt) {
   closeEditPopup(evt);
 }
 
-form.addEventListener('submit', formSubmitHandler);
 profileInfoEditBtn.addEventListener('click', openEditPopup);
-btnCloseForm.addEventListener('click', closeEditPopup);
+popupContainer.addEventListener('submit', formSubmitHandler);
+btnClosePopup.addEventListener('click', closeEditPopup);
