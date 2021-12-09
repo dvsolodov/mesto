@@ -10,3 +10,9 @@
   vertical-align: top;
   box-sizing: border-box;
 }
+
+@media screen and (max-width: 540px) {
+  .form__input_text {
+    margin: 0 0 30px 0;
+  }
+}

@@ -1,7 +1,7 @@
 .profile-info__edit-btn {
   position: absolute;
   top: 16px;
-  right: 0;
+  right: -37px;
   width: 24px;
   height: 24px;
   background-color: #000;
@@ -17,4 +17,14 @@
 .profile-info__edit-btn:hover {
   background-image: url(../../../images/profile-info-edit-btn-hover.svg);
   transition: background-image .3s;
+}
+
+@media screen and (max-width: 415px){
+  .profile-info__edit-btn {
+    width: 18px;
+    height: 18px;
+    top: 10px;
+    right: -30px;
+    background-size: 18px;
+  }
 }

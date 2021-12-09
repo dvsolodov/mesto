@@ -12,3 +12,10 @@
   background-color: rgba(0, 0, 0, .8);
   transition: background-color .3s;
 }
+
+@media screen and (max-width: 540px) {
+  .form__input_submit {
+    margin-top: 15px;
+    height: 46px;
+  }
+}

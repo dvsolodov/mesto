@@ -17,5 +17,14 @@
 .form__close-btn:hover {
   background-image: url(../../../images/popup-close-icon-hover.svg);
   transition: background-image .3s;
+}
 
+@media screen and (max-width: 540px) {
+  .form__close-btn {
+    width: 20px;
+    height: 20px;
+    background-size: 20px;
+    top: -36px;
+    right: 0;
+  }
 }

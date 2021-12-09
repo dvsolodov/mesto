@@ -8,4 +8,27 @@
   gap: 30px;
   justify-content: start;
   align-items: center;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 880px){
+  .profile {
+    padding: 0 19px;
+  }
+}
+
+@media screen and (max-width: 710px){
+  .profile {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    justify-items: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 415px){
+  .profile {
+    margin: 0 auto 36px auto;
+    gap: 0;
+  }
 }

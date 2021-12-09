@@ -2,6 +2,13 @@
   position:relative;
   max-width: 336px;
   margin: 0;
-  padding: 0 40px 0 0;
+  padding: 0;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 415px){
+  .profile-info {
+    max-width: 210px;
+    margin-bottom: 36px;
+  }
 }
