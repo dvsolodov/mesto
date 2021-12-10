@@ -44,8 +44,8 @@
 /* begin:photo */
 @import url(../blocks/photo/photo.css);
 @import url(../blocks/photo/__img/photo__img.css);
-@import url(../blocks/photo/__wrap/photo__wrap.css);
 @import url(../blocks/photo/__caption/photo__caption.css);
+@import url(../blocks/photo/__title/photo__title.css);
 @import url(../blocks/photo/__like-btn/photo__like-btn.css);
 /* end:photo */
 

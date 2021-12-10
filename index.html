@@ -12,11 +12,12 @@
 </head>
 <body class="page">
   <div class="container">
-
     <header class="header">
       <img class="header__logo" src="images/header-logo.svg" alt="логотип">
     </header><!--end:header-->
+  </div><!--end:container-->
 
+  <main class="container">
     <section class="profile">
       <img class="profile__avatar" src="images/profile-avatar.jpg" alt="аватар">
       <div class="profile-info">
@@ -29,60 +30,63 @@
 
     <section class="photos">
       <figure class="photo">
-        <img class="photo__img" src="images/photos/kharachaevsk.jpg" alt="Развалины храма у подножья горы">
-        <div class="photo__wrap">
-          <figcaption class="photo__caption">Карачаевск</figcaption>
+        <img class="photo__img" src="images/photos/kharachaevsk.jpg" alt="развалины храма у подножья горы">
+        <figcaption class="photo__caption">
+          <span class="photo__title">Карачаевск</span>
           <button class="photo__like-btn"></button>
-        </div>
+        </figcaption>
       </figure><!--end:photo-->
 
       <figure class="photo">
         <img class="photo__img" src="images/photos/elbrus-top.jpg" alt="вершина горы Эльбрус">
-        <div class="photo__wrap">
-          <figcaption class="photo__caption">Гора Эльбрус</figcaption>
+        <figcaption class="photo__caption">
+          <span class="photo__title">Гора Эльбрус</span>
           <button class="photo__like-btn"></button>
-        </div>
+        </figcaption>
       </figure><!--end:photo-->
 
       <figure class="photo">
         <img class="photo__img" src="images/photos/dombai.jpg" alt="горы Домбая">
-        <div class="photo__wrap">
-          <figcaption class="photo__caption">Домбай</figcaption>
+        <figcaption class="photo__caption">
+          <span class="photo__title">Домбай</span>
           <button class="photo__like-btn"></button>
-        </div>
+        </figcaption>
       </figure><!--end:photo-->
 
       <figure class="photo">
         <img class="photo__img" src="images/photos/elbrus-top.jpg" alt="вершина горы Эльбрус">
-        <div class="photo__wrap">
-          <figcaption class="photo__caption">Гора Эльбрус</figcaption>
+        <figcaption class="photo__caption">
+          <span class="photo__title">Гора Эльбрус</span>
           <button class="photo__like-btn"></button>
-        </div>
+        </figcaption>
       </figure><!--end:photo-->
 
       <figure class="photo">
         <img class="photo__img" src="images/photos/dombai.jpg" alt="горы Домбая">
-        <div class="photo__wrap">
-          <figcaption class="photo__caption">Домбай</figcaption>
+        <figcaption class="photo__caption">
+          <span class="photo__title">Домбай</span>
           <button class="photo__like-btn"></button>
-        </div>
+        </figcaption>
       </figure><!--end:photo-->
 
       <figure class="photo">
-        <img class="photo__img" src="images/photos/kharachaevsk.jpg" alt="Развалины храма у подножья горы">
-        <div class="photo__wrap">
-          <figcaption class="photo__caption">Карачаево-Черкессия</figcaption>
+        <img class="photo__img" src="images/photos/kharachaevsk.jpg" alt="развалины храма у подножья горы">
+        <figcaption class="photo__caption">
+          <span class="photo__title">Карачаево-Черкессия</span>
           <button class="photo__like-btn"></button>
-        </div>
+        </figcaption>
       </figure><!--end:photo-->
     </section><!--end:photos-->
+  </main><!--end:container-->
 
+  <div class="container">
     <footer class="footer">
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
-    </footer>
+    </footer><!--end:container-->
+  </div>
 
     <div class="popup" id="edit-popup">
-      <form class="popup__container" action="" method="POST" id="popup-container">
+      <form class="popup__container" id="popup-container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <input class="popup__input popup__input_text" type="text" name="name" id="input-name">
         <input class="popup__input popup__input_text" type="text" name="about" id="input-about">
@@ -90,8 +94,6 @@
         <button class="popup__close-btn" id="btn-close-popup"></button>
       </form>
     </div><!--end:popup-->
-
-  </div><!--end:container-->
 
   <script src="blocks/profile-info/profile-info.js"></script>
 </body>
