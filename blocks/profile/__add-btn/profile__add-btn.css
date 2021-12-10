@@ -13,7 +13,6 @@
   outline: none;
   border-radius: 2px;
   cursor: pointer;
-  outline: none;
   transition: background-image .3s, border-color .3s;
 }
 
