@@ -15,8 +15,8 @@
 }
 
 .popup__close-btn:hover {
-  background-image: url(../../../images/popup-close-icon-hover.svg);
-  transition: background-image .3s;
+  opacity: 0.6;
+  transition: opacity .3s;
 }
 
 @media screen and (max-width: 540px) {
