@@ -17,7 +17,7 @@ function openEditPopup(evt) {
   editPopup.classList.toggle('popup_opened');
 }
 
-// close popup to edit profile information
+// close profile information editing popup
 function closeEditPopup(evt) {
   evt.preventDefault();
 
