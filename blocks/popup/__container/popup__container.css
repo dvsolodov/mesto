@@ -2,9 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: relative;
   width: 100%;
-  max-width: 430px;
   height: auto;
   margin: 0;
   padding: 34px 36px 37px 36px;
@@ -16,7 +14,6 @@
 
 @media screen and (max-width: 540px) {
   .popup__container {
-    width: 282px;
     padding: 25px 22px;
   }
 }
