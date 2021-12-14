@@ -1,23 +1,20 @@
 /* begin:common styles */
 @import url(../vendor/normalize.css);
 @import url(../blocks/page/page.css);
-@import url(../blocks/container/container.css);
 /* end:common styles */
 
 /* begin:fonts */
 @import url(../vendor/fonts/inter.css);
 /* end:fonts */
 
-/* begin:common styles */
-@import url(../vendor/normalize.css);
-@import url(../blocks/page/page.css);
-@import url(../blocks/container/container.css);
-/* end:common styles */
-
 /* begin:header */
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
 /* end:header */
+
+/* begin:content */
+@import url(../blocks/content/content.css);
+/* end:content */
 
 /* begin:profile */
 @import url(../blocks/profile/profile.css);

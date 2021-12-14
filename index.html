@@ -11,13 +11,11 @@
     <link rel="stylesheet" href="pages/index.css">
 </head>
 <body class="page">
-  <div class="container">
-    <header class="header">
-      <img class="header__logo" src="images/header-logo.svg" alt="логотип">
-    </header><!--end:header-->
-  </div><!--end:container-->
+  <header class="header">
+    <img class="header__logo" src="images/header-logo.svg" alt="логотип">
+  </header><!--end:header-->
 
-  <main class="container">
+  <main class="content">
     <section class="profile">
       <img class="profile__avatar" src="images/profile-avatar.jpg" alt="Жак-Ив Кусто">
       <div class="profile-info">
@@ -77,23 +75,21 @@
         </figcaption>
       </figure><!--end:photo-->
     </section><!--end:photos-->
-  </main><!--end:container-->
+  </main><!--end:content-->
 
-  <div class="container">
-    <footer class="footer">
-      <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
-    </footer><!--end:container-->
-  </div>
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
+  </footer><!--end:footer-->
 
-    <div class="popup" id="edit-popup">
-      <form class="popup__container" id="popup-container">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__input popup__input_text" type="text" name="name" id="input-name">
-        <input class="popup__input popup__input_text" type="text" name="about" id="input-about">
-        <input class="popup__input popup__input_submit" type="submit" value="Сохранить" id="input-submit">
-        <button class="popup__close-btn" id="btn-close-popup"></button>
-      </form>
-    </div><!--end:popup-->
+  <div class="popup" id="edit-popup">
+    <form class="popup__container" id="popup-container">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <input class="popup__input popup__input_text" type="text" name="name" id="input-name">
+      <input class="popup__input popup__input_text" type="text" name="about" id="input-about">
+      <input class="popup__input popup__input_submit" type="submit" value="Сохранить" id="input-submit">
+      <button class="popup__close-btn" id="btn-close-popup"></button>
+    </form>
+  </div><!--end:popup-->
 
   <script src="blocks/profile-info/profile-info.js"></script>
 </body>
