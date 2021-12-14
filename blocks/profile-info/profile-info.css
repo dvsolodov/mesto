@@ -1,5 +1,10 @@
 .profile-info {
-  position:relative;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 16px 18px;
+  justify-items: start;
+  align-items: center;
   max-width: 336px;
   margin: 0;
   padding: 0;
@@ -8,7 +13,8 @@
 
 @media screen and (max-width: 415px){
   .profile-info {
-    max-width: 210px;
+    max-width: 282px;
     margin-bottom: 36px;
+    gap: 14px 10px;
   }
 }

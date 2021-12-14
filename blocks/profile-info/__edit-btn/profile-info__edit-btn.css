@@ -1,7 +1,4 @@
 .profile-info__edit-btn {
-  position: absolute;
-  top: 16px;
-  right: -37px;
   width: 24px;
   height: 24px;
   background-color: #000;
@@ -12,6 +9,10 @@
   cursor: pointer;
   outline: none;
   transition: background-image .3s;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
 }
 
 .profile-info__edit-btn:hover {
@@ -23,8 +24,6 @@
   .profile-info__edit-btn {
     width: 18px;
     height: 18px;
-    top: 10px;
-    right: -30px;
     background-size: 18px;
   }
 }

@@ -9,6 +9,10 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
+  grid-row-end: 3;
 }
 
 @media screen and (max-width: 710px){
