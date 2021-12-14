@@ -1,21 +1,23 @@
-.popup__input_submit {
-  margin-top: 18px;
+.popup__input-submit {
+  margin: 18px 0 0 0;
+  padding: 0;
   height: 50px;
   color: #fff;
   background-color: #000;
+  border: none;
   border-radius: 2px;
   cursor: pointer;
   transition: background-color .3s;
 }
 
-.popup__input_submit:hover {
+.popup__input-submit:hover {
   background-color: rgba(0, 0, 0, .8);
   transition: background-color .3s;
 }
 
 @media screen and (max-width: 540px) {
-  .popup__input_submit {
-    margin-top: 15px;
+  .popup__input-submit {
+    margin: 15px 0 0 0;
     height: 46px;
   }
 }
