@@ -12,6 +12,6 @@
 }
 
 .photo__like-btn:hover {
-  background-image: url(../../../images/photo-like-hover.svg);
-  transition: background-image .3s;
+  opacity: 0.5;
+  transition: opacity .3s;
 }
