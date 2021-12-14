@@ -22,7 +22,6 @@
     grid-template-columns: 1fr;
     grid-template-rows: repeat(3, auto);
     justify-items: center;
-    align-items: center;
   }
 }
 
