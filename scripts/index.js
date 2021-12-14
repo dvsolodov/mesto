@@ -7,6 +7,7 @@ let aboutInput = popupContainer.querySelector('#input-about');
 let profileInfoName = document.querySelector('#profile-info-name');
 let profileInfoAbout = document.querySelector('#profile-info-about');
 
+// open popup to edit profile information
 function openEditPopup(evt) {
   evt.preventDefault();
 
@@ -16,12 +17,14 @@ function openEditPopup(evt) {
   editPopup.classList.toggle('popup_opened');
 }
 
+// close popup to edit profile information
 function closeEditPopup(evt) {
   evt.preventDefault();
 
   editPopup.classList.toggle('popup_opened');
 }
 
+// save profile information after edition
 function formSubmitHandler(evt) {
   evt.preventDefault();
 
