@@ -8,6 +8,11 @@
   border-radius: 2px;
   cursor: pointer;
   transition: background-color .3s;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
 }
 
 .popup__input-submit:hover {
@@ -19,5 +24,7 @@
   .popup__input-submit {
     margin: 15px 0 0 0;
     height: 46px;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
