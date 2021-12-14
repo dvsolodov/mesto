@@ -3,7 +3,8 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
-  width: 430px;
+  width: 100%;
+  max-width: 430px;
   height: auto;
   margin: 0;
   padding: 34px 36px 37px 36px;
