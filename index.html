@@ -26,54 +26,7 @@
       <button class="profile__add-btn" id="photo-add-btn" type="button" aria-label="Добавить картинку"></button>
     </section><!--end:profile-->
 
-    <section class="photos">
-      <article class="photo">
-        <img class="photo__img" src="images/photos/kharachaevsk.jpg" alt="развалины храма у подножья горы">
-        <div class="photo__caption">
-          <h2 class="photo__title">Карачаевск</h2>
-          <button class="photo__like-btn" type="button" aria-label="Нравится"></button>
-        </div>
-      </article><!--end:photo-->
-
-      <article class="photo">
-        <img class="photo__img" src="images/photos/elbrus-top.jpg" alt="вершина горы Эльбрус">
-        <div class="photo__caption">
-          <h2 class="photo__title">Гора Эльбрус</h2>
-          <button class="photo__like-btn" type="button" aria-label="Нравится"></button>
-        </div>
-      </article><!--end:photo-->
-
-      <article class="photo">
-        <img class="photo__img" src="images/photos/dombai.jpg" alt="горы Домбая">
-        <div class="photo__caption">
-          <h2 class="photo__title">Домбай</h2>
-          <button class="photo__like-btn" type="button" aria-label="Нравится"></button>
-        </div>
-      </article><!--end:photo-->
-
-      <article class="photo">
-        <img class="photo__img" src="images/photos/elbrus-top.jpg" alt="вершина горы Эльбрус">
-        <div class="photo__caption">
-          <h2 class="photo__title">Гора Эльбрус</h2>
-          <button class="photo__like-btn" type="button" aria-label="Нравится"></button>
-        </div>
-      </article><!--end:photo-->
-
-      <article class="photo">
-        <img class="photo__img" src="images/photos/dombai.jpg" alt="горы Домбая">
-        <div class="photo__caption">
-          <h2 class="photo__title">Домбай</h2>
-          <button class="photo__like-btn" type="button" aria-label="Нравится"></button>
-        </div>
-      </article><!--end:photo-->
-
-      <article class="photo">
-        <img class="photo__img" src="images/photos/kharachaevsk.jpg" alt="развалины храма у подножья горы">
-        <div class="photo__caption">
-          <h2 class="photo__title">Карачаево-Черкессия</h2>
-          <button class="photo__like-btn" type="button" aria-label="Нравится"></button>
-        </div>
-      </article><!--end:photo-->
+    <section class="photos" id="photos">
     </section><!--end:photos-->
   </main><!--end:content-->
 
@@ -84,7 +37,6 @@
   <div class="popup" id="popup">
     <div class="popup__wrap" id="popup-wrap">
       <form class="popup__container" id="popup-container" name="">
-        <!-- add a template -->
       </form>
       <button class="popup__close-btn" id="popup-close-btn" type="button" aria-label="Закрыть"></button>
     </div>
@@ -107,15 +59,14 @@
 
   <template id="card-template">
     <article class="photo">
-      <img class="photo__img" src="" alt="">
+      <img class="photo__img" id="photo-img" src="" alt="">
       <div class="photo__caption">
-        <h2 class="photo__title"></h2>
+        <h2 class="photo__title" id="photo-title"></h2>
         <button class="photo__like-btn" type="button" aria-label="Нравится"></button>
       </div>
     </article><!--end:photo-->
   </template>
 
-  <script src="scripts/cards.js"></script>
   <script src="scripts/index.js"></script>
 </body>
 </html>

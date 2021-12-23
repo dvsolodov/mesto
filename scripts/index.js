@@ -1,3 +1,30 @@
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'images/photos/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'images/photos/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'images/photos/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'images/photos/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'images/photos/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'images/photos/baikal.jpg'
+  }
+];
+
 // profile-info
 const profileInfoEditBtn = document.querySelector('#profile-info-edit-btn');
 const profileInfoName = document.querySelector('#profile-info-name');
@@ -5,6 +32,7 @@ const profileInfoAbout = document.querySelector('#profile-info-about');
 
 // photos
 const photoAddBtn = document.querySelector('#photo-add-btn');
+let photos = document.querySelector('#photos');
 
 // popup
 const popup = document.querySelector('#popup');
@@ -15,7 +43,21 @@ const popupForm = popup.querySelector('#popup-container');
 // templates
 const editFormTemplate = document.querySelector('#edit-form-template').content;
 const addFormTemplate = document.querySelector('#add-form-template').content;
+const cardTemplate = document.querySelector('#card-template').content;
 
+
+// photos rendering
+initialCards.forEach(card => {
+  const cloneCard = cardTemplate.cloneNode(true);
+  const photoTitle = cloneCard.querySelector('#photo-title');
+  const photoImg = cloneCard.querySelector('#photo-img');
+
+  photoTitle.textContent = card.name;
+  photoImg.alt = card.name;
+  photoImg.src = card.link;
+
+  photos.append(cloneCard);
+})
 
 // open editing popup
 profileInfoEditBtn.addEventListener('click', function (event) {
