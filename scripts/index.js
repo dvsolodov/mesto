@@ -1,39 +1,71 @@
-let profileInfoEditBtn = document.querySelector('#profile-info-edit-btn');
-let editPopup = document.querySelector('#edit-popup');
-let popupContainer = document.querySelector('#popup-container');
-let btnClosePopup = document.querySelector('#btn-close-popup');
-let nameInput = popupContainer.querySelector('#input-name');
-let aboutInput = popupContainer.querySelector('#input-about');
-let profileInfoName = document.querySelector('#profile-info-name');
-let profileInfoAbout = document.querySelector('#profile-info-about');
+// profile-info
+const profileInfoEditBtn = document.querySelector('#profile-info-edit-btn');
+const profileInfoName = document.querySelector('#profile-info-name');
+const profileInfoAbout = document.querySelector('#profile-info-about');
 
-// open popup to edit profile information
-function openEditPopup(evt) {
-  evt.preventDefault();
+// photos
+const photoAddBtn = document.querySelector('#photo-add-btn');
 
-  nameInput.value = profileInfoName.textContent;
-  aboutInput.value = profileInfoAbout.textContent;
+// popup
+const popup = document.querySelector('#popup');
+const popupCloseBtn = popup.querySelector('#popup-close-btn');
+const popupWrap = popup.querySelector('#popup-wrap');
+const popupForm = popup.querySelector('#popup-container');
 
-  editPopup.classList.toggle('popup_opened');
+// templates
+const editFormTemplate = document.querySelector('#edit-form-template').content;
+const addFormTemplate = document.querySelector('#add-form-template').content;
+
+
+// open editing popup
+profileInfoEditBtn.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  const cloneForm = editFormTemplate.cloneNode(true);
+  cloneForm.querySelector('#input-name').value = profileInfoName.textContent;
+  cloneForm.querySelector('#input-about').value = profileInfoAbout.textContent;
+
+  popupForm.prepend(cloneForm);
+
+  togglePopup();
+});
+
+// save data to profile-info and close a popup
+popupForm.addEventListener('submit', function (event) {
+  event.preventDefault();
+
+  profileInfoName.textContent = popupForm.querySelector('#input-name').value;
+  profileInfoAbout.textContent = popupForm.querySelector('#input-about').value;
+
+  clearPopupForm();
+  togglePopup();
+});
+
+// open a popup to add image
+photoAddBtn.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  const cloneForm = addFormTemplate.cloneNode(true);
+  popupForm.prepend(cloneForm);
+
+  togglePopup();
+});
+
+// close a popup
+popupCloseBtn.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  clearPopupForm();
+  togglePopup();
+});
+
+
+function togglePopup() {
+  popup.classList.toggle('popup_opened');
 }
 
-// close profile information editing popup
-function closeEditPopup(evt) {
-  evt.preventDefault();
-
-  editPopup.classList.toggle('popup_opened');
+function clearPopupForm() {
+  while (popupForm.firstChild) {
+    popupForm.removeChild(popupForm.firstChild);
+  }
 }
-
-// save profile information after edition
-function formSubmitHandler(evt) {
-  evt.preventDefault();
-
-  profileInfoName.textContent = nameInput.value;
-  profileInfoAbout.textContent = aboutInput.value;
-
-  closeEditPopup(evt);
-}
-
-profileInfoEditBtn.addEventListener('click', openEditPopup);
-popupContainer.addEventListener('submit', formSubmitHandler);
-btnClosePopup.addEventListener('click', closeEditPopup);

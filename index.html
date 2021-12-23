@@ -23,7 +23,7 @@
         <p class="profile-info__about" id="profile-info-about">Исследователь океана</p>
         <button class="profile-info__edit-btn" id="profile-info-edit-btn" type="button" aria-label="Редактировать профиль"></button>
       </div><!--end:profile-info-->
-      <button class="profile__add-btn" id="pic-add-btn" type="button" aria-label="Добавить картинку"></button>
+      <button class="profile__add-btn" id="photo-add-btn" type="button" aria-label="Добавить картинку"></button>
     </section><!--end:profile-->
 
     <section class="photos">
@@ -81,18 +81,41 @@
     <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
   </footer><!--end:footer-->
 
-  <div class="popup" id="edit-popup">
-    <div class="popup__wrap">
-      <form class="popup__container" id="popup-container" name="popup-container">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input class="popup__input-text" type="text" name="name" id="input-name" placeholder="имя" required>
-        <input class="popup__input-text" type="text" name="about" id="input-about" placeholder="род занятий" required>
-        <input class="popup__input-submit" type="submit" value="Сохранить" id="input-submit">
+  <div class="popup" id="popup">
+    <div class="popup__wrap" id="popup-wrap">
+      <form class="popup__container" id="popup-container" name="">
+        <!-- add a template -->
       </form>
-      <button class="popup__close-btn" id="btn-close-popup" type="button" aria-label="Закрыть"></button>
+      <button class="popup__close-btn" id="popup-close-btn" type="button" aria-label="Закрыть"></button>
     </div>
   </div><!--end:popup-->
 
+
+  <template id="edit-form-template">
+    <h2 class="popup__title">Редактировать профиль</h2>
+    <input class="popup__input-text" type="text" name="name" id="input-name" placeholder="имя" required>
+    <input class="popup__input-text" type="text" name="about" id="input-about" placeholder="род занятий" required>
+    <input class="popup__input-submit" type="submit" value="Сохранить">
+  </template>
+
+  <template id="add-form-template">
+    <h2 class="popup__title">Новое место</h2>
+    <input class="popup__input-text" type="text" name="img_title" id="img-title-input" placeholder="Название" required>
+    <input class="popup__input-text" type="text" name="img_link" id="img-link-input" placeholder="Ссылка на картинку" required>
+    <input class="popup__input-submit" type="submit" value="Сохранить">
+  </template>
+
+  <template id="card-template">
+    <article class="photo">
+      <img class="photo__img" src="" alt="">
+      <div class="photo__caption">
+        <h2 class="photo__title"></h2>
+        <button class="photo__like-btn" type="button" aria-label="Нравится"></button>
+      </div>
+    </article><!--end:photo-->
+  </template>
+
+  <script src="scripts/cards.js"></script>
   <script src="scripts/index.js"></script>
 </body>
 </html>
