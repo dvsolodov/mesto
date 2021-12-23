@@ -27,8 +27,4 @@
     background-image: url(../../../images/profile-add-btn-small.svg);
     justify-self: center;
   }
-
-  .profile__add-btn:hover {
-    background-image: url(../../../images/profile-add-btn-small.svg);
-  }
 }
