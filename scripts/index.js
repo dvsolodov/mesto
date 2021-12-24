@@ -47,17 +47,8 @@ const cardTemplate = document.querySelector('#card-template').content;
 
 
 // photos rendering
-initialCards.forEach(card => {
-  const cloneCard = cardTemplate.cloneNode(true);
-  const photoTitle = cloneCard.querySelector('#photo-title');
-  const photoImg = cloneCard.querySelector('#photo-img');
+renderPhotos();
 
-  photoTitle.textContent = card.name;
-  photoImg.alt = card.name;
-  photoImg.src = card.link;
-
-  photos.append(cloneCard);
-})
 
 // open editing popup
 profileInfoEditBtn.addEventListener('click', function (event) {
@@ -68,6 +59,7 @@ profileInfoEditBtn.addEventListener('click', function (event) {
   cloneForm.querySelector('#input-about').value = profileInfoAbout.textContent;
 
   popupForm.prepend(cloneForm);
+  popupForm.name = "edit-form";
 
   togglePopup();
 });
@@ -76,19 +68,32 @@ profileInfoEditBtn.addEventListener('click', function (event) {
 popupForm.addEventListener('submit', function (event) {
   event.preventDefault();
 
-  profileInfoName.textContent = popupForm.querySelector('#input-name').value;
-  profileInfoAbout.textContent = popupForm.querySelector('#input-about').value;
+  if (popupForm.getAttribute('name') === "edit-form") {
+    profileInfoName.textContent = popupForm.querySelector('#input-name').value;
+    profileInfoAbout.textContent = popupForm.querySelector('#input-about').value;
+  }
 
-  clearPopupForm();
+  if (popupForm.getAttribute('name') === "add-form") {
+    const newPhoto = {};
+    newPhoto.name = popupForm.querySelector('#img-title-input').value;
+    newPhoto.link = popupForm.querySelector('#img-link-input').value;
+    initialCards.push(newPhoto);
+
+    clearBlock(photos);
+    renderPhotos();
+  }
+
+  clearBlock(popupForm);
   togglePopup();
 });
 
-// open a popup to add image
+// open a popup to add photo
 photoAddBtn.addEventListener('click', function (event) {
   event.preventDefault();
 
   const cloneForm = addFormTemplate.cloneNode(true);
   popupForm.prepend(cloneForm);
+  popupForm.name = "add-form";
 
   togglePopup();
 });
@@ -97,7 +102,7 @@ photoAddBtn.addEventListener('click', function (event) {
 popupCloseBtn.addEventListener('click', function (event) {
   event.preventDefault();
 
-  clearPopupForm();
+  clearBlock(popupForm);
   togglePopup();
 });
 
@@ -106,8 +111,22 @@ function togglePopup() {
   popup.classList.toggle('popup_opened');
 }
 
-function clearPopupForm() {
-  while (popupForm.firstChild) {
-    popupForm.removeChild(popupForm.firstChild);
+function clearBlock(node) {
+  while (node.firstChild) {
+    node.removeChild(node.firstChild);
   }
+}
+
+function renderPhotos() {
+  initialCards.forEach(card => {
+    const cloneCard = cardTemplate.cloneNode(true);
+    const photoTitle = cloneCard.querySelector('#photo-title');
+    const photoImg = cloneCard.querySelector('#photo-img');
+
+    photoTitle.textContent = card.name;
+    photoImg.alt = card.name;
+    photoImg.src = card.link;
+
+    photos.prepend(cloneCard);
+  })
 }
