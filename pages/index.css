@@ -22,11 +22,8 @@
 /* begin:popup */
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/popup/__wrap/popup__wrap.css);
+@import url(../blocks/popup/_opacity-darker/popup_opacity-darker.css);
 @import url(../blocks/popup/__container/popup__container.css);
-@import url(../blocks/popup/__title/popup__title.css);
-@import url(../blocks/popup/__input-text/popup__input-text.css);
-@import url(../blocks/popup/__input-submit/popup__input-submit.css);
 @import url(../blocks/popup/__close-btn/popup__close-btn.css);
 /* end:popup */
 
@@ -47,9 +44,25 @@
 @import url(../blocks/photo/__caption/photo__caption.css);
 @import url(../blocks/photo/__title/photo__title.css);
 @import url(../blocks/photo/__like-btn/photo__like-btn.css);
+@import url(../blocks/photo/__like-btn/_active/photo__like-btn_active.css);
+@import url(../blocks/photo/__delete-btn/photo__delete-btn.css);
 /* end:photo */
 
 /* begin:footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 /* end:footer */
+
+/* begin:form */
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__input-text/form__input-text.css);
+@import url(../blocks/form/__input-submit/form__input-submit.css);
+/* end:form */
+
+/* begin:view-photo*/
+@import url(../blocks/view-photo/view-photo.css);
+@import url(../blocks/view-photo/__img/view-photo__img.css);
+@import url(../blocks/view-photo/__caption/view-photo__caption.css);
+/* end:view-photo*/
+

@@ -37,36 +37,37 @@ let photos = document.querySelector('#photos');
 // popup
 const popup = document.querySelector('#popup');
 const popupCloseBtn = popup.querySelector('#popup-close-btn');
-const popupWrap = popup.querySelector('#popup-wrap');
-const popupForm = popup.querySelector('#popup-container');
+const popupContainer = popup.querySelector('#popup-container');
 
 // templates
 const editFormTemplate = document.querySelector('#edit-form-template').content;
 const addFormTemplate = document.querySelector('#add-form-template').content;
 const cardTemplate = document.querySelector('#card-template').content;
+const photoTemplate = document.querySelector('#view-img-template').content;
 
 
-// photos rendering
-renderPhotos();
-
+// initial photos rendering
+renderPhotos(initialCards)
 
 // open editing popup
 profileInfoEditBtn.addEventListener('click', function (event) {
   event.preventDefault();
 
   const cloneForm = editFormTemplate.cloneNode(true);
+
   cloneForm.querySelector('#input-name').value = profileInfoName.textContent;
   cloneForm.querySelector('#input-about').value = profileInfoAbout.textContent;
 
-  popupForm.prepend(cloneForm);
-  popupForm.name = "edit-form";
+  popupContainer.prepend(cloneForm);
 
   togglePopup();
 });
 
-// save data to profile-info and close a popup
-popupForm.addEventListener('submit', function (event) {
+// save data and close a popup
+popupContainer.addEventListener('submit', function (event) {
   event.preventDefault();
+
+  const popupForm = popupContainer.querySelector('.form');
 
   if (popupForm.getAttribute('name') === "edit-form") {
     profileInfoName.textContent = popupForm.querySelector('#input-name').value;
@@ -74,16 +75,14 @@ popupForm.addEventListener('submit', function (event) {
   }
 
   if (popupForm.getAttribute('name') === "add-form") {
-    const newPhoto = {};
-    newPhoto.name = popupForm.querySelector('#img-title-input').value;
-    newPhoto.link = popupForm.querySelector('#img-link-input').value;
-    initialCards.push(newPhoto);
-
-    clearBlock(photos);
-    renderPhotos();
+    const newPhoto = cardTemplate.cloneNode(true);
+    newPhoto.querySelector('#photo-title').textContent = popupForm.querySelector('#img-title-input').value;
+    newPhoto.querySelector('#photo-img').src = popupForm.querySelector('#img-link-input').value;
+    newPhoto.querySelector('#photo-img').alt = popupForm.querySelector('#img-title-input').value;
+    photos.prepend(newPhoto);
   }
 
-  clearBlock(popupForm);
+  clearPopup();
   togglePopup();
 });
 
@@ -92,8 +91,7 @@ photoAddBtn.addEventListener('click', function (event) {
   event.preventDefault();
 
   const cloneForm = addFormTemplate.cloneNode(true);
-  popupForm.prepend(cloneForm);
-  popupForm.name = "add-form";
+  popupContainer.prepend(cloneForm);
 
   togglePopup();
 });
@@ -102,8 +100,36 @@ photoAddBtn.addEventListener('click', function (event) {
 popupCloseBtn.addEventListener('click', function (event) {
   event.preventDefault();
 
-  clearBlock(popupForm);
+  clearPopup();
   togglePopup();
+});
+
+// handel photos events
+photos.addEventListener('click', function (event) {
+  event.preventDefault();
+
+  const targetElem = event.target;
+
+  if (targetElem.id === "photo-delete-btn") {
+    targetElem.closest(".photo").remove();
+  }
+
+  if (targetElem.id === "photo-like-btn") {
+    targetElem.classList.toggle('photo__like-btn_active');
+  }
+
+  if (targetElem.id === "photo-img") {
+    const clonePhoto = photoTemplate.cloneNode(true);
+    const clonePhotoImg = clonePhoto.querySelector('img');
+    const clonePhotoCaption = clonePhoto.querySelector('figcaption');
+    clonePhotoImg.src = targetElem.src;
+    clonePhotoImg.alt = targetElem.alt;
+    clonePhotoCaption.textContent = targetElem.alt;
+    popup.classList.add('popup_opacity-darker');
+    popupContainer.prepend(clonePhoto);
+
+    togglePopup();
+  }
 });
 
 
@@ -111,21 +137,24 @@ function togglePopup() {
   popup.classList.toggle('popup_opened');
 }
 
-function clearBlock(node) {
-  while (node.firstChild) {
-    node.removeChild(node.firstChild);
-  }
+function clearPopup() {
+  setTimeout(() => {
+    popupContainer.childNodes[1].remove();
+    popup.classList.remove('popup_opacity-darker');
+  }, 300);
 }
 
-function renderPhotos() {
-  initialCards.forEach(card => {
+function renderPhotos(photoArray) {
+  photoArray.forEach((card, index) => {
     const cloneCard = cardTemplate.cloneNode(true);
     const photoTitle = cloneCard.querySelector('#photo-title');
     const photoImg = cloneCard.querySelector('#photo-img');
+    const photoDeleteBtn = cloneCard.querySelector('#photo-delete-btn');
 
     photoTitle.textContent = card.name;
     photoImg.alt = card.name;
     photoImg.src = card.link;
+    photoDeleteBtn.dataset.id = index;
 
     photos.prepend(cloneCard);
   })
