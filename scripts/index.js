@@ -47,7 +47,7 @@ const photoTemplate = document.querySelector('#view-img-template').content;
 
 
 // initial photos rendering
-renderPhotos(initialCards)
+renderPhotos(initialCards);
 
 // open editing popup
 profileInfoEditBtn.addEventListener('click', function (event) {
