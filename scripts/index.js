@@ -66,7 +66,7 @@ editForm.addEventListener('submit', function (event) {
 });
 // close profile popup
 profilePopupCloseBtn.addEventListener('click', function (event) {
-  openPopup(profilePopup);
+  closePopup(profilePopup);
 });
 
 // open add card popup
