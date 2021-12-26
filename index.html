@@ -21,9 +21,9 @@
       <div class="profile-info">
         <h1 class="profile-info__name" id="profile-info-name">Жак-Ив Кусто</h1>
         <p class="profile-info__about" id="profile-info-about">Исследователь океана</p>
-        <button class="profile-info__edit-btn" id="profile-info-edit-btn" type="button" aria-label="Редактировать профиль"></button>
+        <button class="profile-info__edit-btn" id="edit-popup-btn" type="button" aria-label="Редактировать профиль"></button>
       </div><!--end:profile-info-->
-      <button class="profile__add-btn" id="photo-add-btn" type="button" aria-label="Добавить картинку"></button>
+      <button class="profile__add-btn" id="add-popup-btn" type="button" aria-label="Добавить картинку"></button>
     </section><!--end:profile-->
 
     <section class="photos" id="photos">
@@ -34,47 +34,49 @@
     <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
   </footer><!--end:footer-->
 
-  <div class="popup" id="popup">
-    <div class="popup__container" id="popup-container">
-      <button class="popup__close-btn" id="popup-close-btn" type="button" aria-label="Закрыть"></button>
+  <div class="popup" id="edit-popup">
+    <div class="popup__container">
+      <form class="form" name="edit-form">
+        <h2 class="form__title">Редактировать профиль</h2>
+        <input class="form__input-text" type="text" name="name" id="input-name" placeholder="имя" required>
+        <input class="form__input-text" type="text" name="about" id="input-about" placeholder="род занятий" required>
+        <input class="form__input-submit" type="submit" value="Сохранить">
+      </form>
+      <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
     </div>
   </div><!--end:popup-->
 
+  <div class="popup" id="add-popup">
+    <div class="popup__container">
+      <form class="form" name="add-form">
+        <h2 class="form__title">Новое место</h2>
+        <input class="form__input-text" type="text" name="img_title" id="input-title" placeholder="Название" required>
+        <input class="form__input-text" type="text" name="img_link" id="input-link" placeholder="Ссылка на картинку" required>
+        <input class="form__input-submit" type="submit" value="Сохранить">
+      </form>
+      <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+    </div>
+  </div><!--end:popup-->
 
-  <template id="edit-form-template">
-    <form class="form" id="edit-form" name="edit-form">
-      <h2 class="form__title">Редактировать профиль</h2>
-      <input class="form__input-text" type="text" name="name" id="input-name" placeholder="имя" required>
-      <input class="form__input-text" type="text" name="about" id="input-about" placeholder="род занятий" required>
-      <input class="form__input-submit" type="submit" value="Сохранить">
-    </form>
-  </template>
-
-  <template id="add-form-template">
-    <form class="form" id="add-form" name="add-form">
-      <h2 class="form__title">Новое место</h2>
-      <input class="form__input-text" type="text" name="img_title" id="img-title-input" placeholder="Название" required>
-      <input class="form__input-text" type="text" name="img_link" id="img-link-input" placeholder="Ссылка на картинку" required>
-      <input class="form__input-submit" type="submit" value="Сохранить">
-    </form>
-  </template>
+  <div class="popup" id="view-popup">
+    <div class="popup__container">
+      <figure class="view-photo">
+        <img class="view-photo__img" src="#" alt="#">
+        <figcaption class="view-photo__caption"></figcaption>
+      </figure>
+      <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+    </div>
+  </div><!--end:popup-->
 
   <template id="card-template">
     <article class="photo">
-      <img class="photo__img" id="photo-img" src="#" alt="шаблон карточки">
+      <img class="photo__img" src="#" alt="шаблон карточки">
       <div class="photo__caption">
-        <h2 class="photo__title" id="photo-title"></h2>
-        <button class="photo__like-btn" id="photo-like-btn" type="button" aria-label="Нравится"></button>
+        <h2 class="photo__title"></h2>
+        <button class="photo__like-btn" type="button" aria-label="Нравится"></button>
       </div>
-      <button class="photo__delete-btn" id="photo-delete-btn" type="button" aria-label="Удалить"></button>
+      <button class="photo__delete-btn" type="button" aria-label="Удалить"></button>
     </article><!--end:photo-->
-  </template>
-
-  <template id="view-img-template">
-    <figure class="view-photo">
-      <img class="view-photo__img" src="#" alt="шаблон просмотра картинки">
-      <figcaption class="view-photo__caption"></figcaption>
-    </figure>
   </template>
 
   <script src="scripts/index.js"></script>
