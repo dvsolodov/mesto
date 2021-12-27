@@ -87,23 +87,6 @@ addCardPopupCloseBtn.addEventListener('click', function (event) {
   closePopup(addCardPopup);
 });
 
-document.addEventListener('click', function(event) {
-  const elem = event.target;
-  // open image popup
-  if (elem.classList.contains('photo__img')) {
-      addDataToPopupFromPhoto(elem);
-      openPopup(imagePopup);
-  }
-  // delete a card
-  if (elem.classList.contains('photo__delete-btn')) {
-      deleteCard(elem);
-  }
-  // toggle a like
-  if (elem.classList.contains('photo__like-btn')) {
-      toggleLike(elem);
-  }
-});
-
 // close image popup
 imagePopupCloseBtn.addEventListener('click', function (event) {
   closePopup(imagePopup);
@@ -166,8 +149,25 @@ function createCard(cardData) {
   const card = cardTemplate.cloneNode(true);
   const cardImg = card.querySelector('img');
   const cardTitle = card.querySelector('h2');
+  const cardDeleteBtn = card.querySelector('.photo__delete-btn');
+  const cardLikeBtn = card.querySelector('.photo__like-btn');
+
   cardImg.src = cardData.link;
   cardImg.alt = cardTitle.textContent = cardData.name;
+
+  // open image popup
+  cardImg.addEventListener('click', function(event) {
+      addDataToPopupFromPhoto(cardImg);
+      openPopup(imagePopup);
+  });
+  // delete a card
+  cardDeleteBtn.addEventListener('click', function (event) {
+      deleteCard(cardDeleteBtn);
+  });
+  // toggle a like
+  cardLikeBtn.addEventListener('click', function (event) {
+      toggleLike(cardLikeBtn);
+  });
 
   return card;
 }
