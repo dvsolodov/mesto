@@ -34,12 +34,16 @@ const profilePopup = document.querySelector('#edit-popup');
 const editForm = profilePopup.querySelector('form');
 const editInputName = editForm.querySelector('#input-name');
 const editInputAbout = editForm.querySelector('#input-about');
+const editInputArray = [editInputName, editInputAbout];
+const editSubmitBtn = editForm.querySelector('.form__button');
 const profilePopupCloseBtn = profilePopup.querySelector('.popup__close-btn');
 
 const addCardPopup = document.querySelector('#add-popup');
 const addForm = addCardPopup.querySelector('form');
 const addInputTitle = addForm.querySelector('#input-title');
 const addInputLink = addForm.querySelector('#input-link');
+const addSubmitBtn = addForm.querySelector('.form__button');
+const addInputArray = [addInputTitle, addInputLink];
 const addCardPopupCloseBtn = addCardPopup.querySelector('.popup__close-btn');
 
 const imagePopup = document.querySelector('#view-popup');
@@ -57,11 +61,16 @@ renderPhotos();
 profilePopupOpenBtn.addEventListener('click', function (event) {
   document.addEventListener('keydown', closePopupByEscKey);
   addDataToPopupFromProfile();
+  setSubmitBtnState(editInputArray, editSubmitBtn, 'form__button_disabled');
+  clearErrors(editInputArray, 'form__input_type_error', 'form__error_visible');
   openPopup(profilePopup);
 });
 // save data and close profile popup
 editForm.addEventListener('submit', function (event) {
   event.preventDefault();
+  if (hasInvalidInput(editInputArray)) {
+    return;
+  }
   saveDataToProfileFromPopup();
   closePopup(profilePopup);
   document.removeEventListener('keydown', closePopupByEscKey);
@@ -77,11 +86,15 @@ profilePopup.addEventListener('click', closePopupByOverlay);
 // open add card popup
 addCardPopupOpenBtn.addEventListener('click', function (event) {
   document.addEventListener('keydown', closePopupByEscKey);
+  setSubmitBtnState(addInputArray, addSubmitBtn, 'form__button_disabled');
   openPopup(addCardPopup);
 });
 // add card and close add card popup
 addForm.addEventListener('submit', function (event) {
   event.preventDefault();
+  if (hasInvalidInput(addInputArray)) {
+    return;
+  }
   const cardData = getCardDataFromAddForm();
   const newCard = createCard(cardData);
   photos.prepend(newCard);

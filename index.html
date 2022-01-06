@@ -36,11 +36,31 @@
 
   <div class="popup" id="edit-popup">
     <div class="popup__container">
-      <form class="form" name="edit-form">
+      <form class="form" name="edit-form" novalidate>
         <h2 class="form__title">Редактировать профиль</h2>
-        <input class="form__input-text" type="text" name="name" id="input-name" placeholder="имя" required>
-        <input class="form__input-text" type="text" name="about" id="input-about" placeholder="род занятий" required>
-        <input class="form__input-submit" type="submit" value="Сохранить">
+        <input class="form__input"
+          type="text"
+          name="name"
+          id="input-name"
+          placeholder="Имя"
+          minlength="2"
+          maxlength="40"
+          required
+          autocomplete="off"
+        >
+        <span class="form__error" id="error-input-name"></span>
+        <input class="form__input"
+          type="text"
+          name="about"
+          id="input-about"
+          placeholder="Род занятий"
+          minlength="2"
+          maxlength="200"
+          required
+          autocomplete="off"
+        >
+        <span class="form__error" id="error-input-about"></span>
+        <button class="form__button" type="submit">Сохранить</button>
       </form>
       <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
     </div>
@@ -48,11 +68,29 @@
 
   <div class="popup" id="add-popup">
     <div class="popup__container">
-      <form class="form" name="add-form">
+      <form class="form" name="add-form" novalidate>
         <h2 class="form__title">Новое место</h2>
-        <input class="form__input-text" type="text" name="img_title" id="input-title" placeholder="Название" required>
-        <input class="form__input-text" type="text" name="img_link" id="input-link" placeholder="Ссылка на картинку" required>
-        <input class="form__input-submit" type="submit" value="Сохранить">
+        <input class="form__input"
+          type="text"
+          name="img_title"
+          id="input-title"
+          placeholder="Название"
+          minlength="2"
+          maxlength="30"
+          required
+          autocomplete="off"
+        >
+        <span class="form__error" id="error-input-title"></span>
+        <input class="form__input"
+          type="url"
+          name="img_link"
+          id="input-link"
+          placeholder="Ссылка на картинку"
+          required
+          autocomplete="off"
+        >
+        <span class="form__error" id="error-input-link"></span>
+        <button class="form__button" type="submit">Сохранить</button>
       </form>
       <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
     </div>
