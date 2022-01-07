@@ -26,47 +26,33 @@ function isValid(inputElement, errorElement, obj) {
 }
 
 function showError(inputElement, errorElement, errorMessage, inputErrorClass, errorClass) {
-  showErrorInput(inputElement, inputErrorClass);
-  showErrorMessage(errorElement, errorMessage, errorClass);
-}
-
-function hideError(inputElement, errorElement, inputErrorClass, errorClass) {
-  hideErrorInput(inputElement, inputErrorClass);
-  hideErrorMessage(errorElement, errorClass);
-}
-
-function showErrorInput(inputElement, inputErrorClass) {
   inputElement.classList.add(inputErrorClass);
-}
-
-function showErrorMessage(errorElement, errorMessage, errorClass) {
   errorElement.textContent = errorMessage;
   errorElement.classList.add(errorClass);
 }
 
-function hideErrorInput(inputElement, inputErrorClass) {
+function hideError(inputElement, errorElement, inputErrorClass, errorClass) {
   inputElement.classList.remove(inputErrorClass);
-}
-
-function hideErrorMessage(errorElement, errorClass) {
   errorElement.textContent = '';
   errorElement.classList.remove(errorClass);
 }
 
 function setSubmitBtnState(inputElements, submitBtn, inactiveButtonClass) {
-    if (hasInvalidInput(inputElements)) {
-      hideSubmitButton(submitBtn, inactiveButtonClass);
-      return;
-    }
+  if (hasInvalidInput(inputElements)) {
+    hideSubmitButton(submitBtn, inactiveButtonClass);
+    return;
+  }
   showSubmitButton(submitBtn, inactiveButtonClass);
 }
 
 function showSubmitButton(submitBtn, inactiveButtonClass) {
   submitBtn.classList.remove(inactiveButtonClass);
+  submitBtn.disabled = false;
 }
 
 function hideSubmitButton(submitBtn, inactiveButtonClass) {
   submitBtn.classList.add(inactiveButtonClass);
+  submitBtn.disabled = true;
 }
 
 function hasInvalidInput(inputElements) {
