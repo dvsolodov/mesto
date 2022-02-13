@@ -4,8 +4,8 @@ export default class Card {
     this._card = document.querySelector(templateSelector).content.cloneNode(true);
     this._img = this._card.querySelector('.photo__img');
     this._title = this._card.querySelector('.photo__title');
-    this._deleteBtn = this._card.querySelector('.photo__delete-btn');
-    this._likeBtn = this._card.querySelector('.photo__like-btn');
+    this._btnDelete = this._card.querySelector('.photo__delete-btn');
+    this._btnLike = this._card.querySelector('.photo__like-btn');
   }
 
   createCard = (popup) => {
@@ -14,8 +14,8 @@ export default class Card {
     this._img.alt = this._title.textContent = this._data.name;
 
     this._setEventListeners(this._img, 'click', this._openPopup);
-    this._setEventListeners(this._deleteBtn, 'click', this._deleteCard);
-    this._setEventListeners(this._likeBtn, 'click', this._toggleLike);
+    this._setEventListeners(this._btnDelete, 'click', this._deleteCard);
+    this._setEventListeners(this._btnLike, 'click', this._toggleLike);
 
     return this._card;
   }
@@ -45,7 +45,7 @@ export default class Card {
   }
 
   _toggleLike = () => {
-    this._likeBtn.classList.toggle('photo__like-btn_active');
+    this._btnLike.classList.toggle('photo__like-btn_active');
   }
 
 }
