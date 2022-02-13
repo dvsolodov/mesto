@@ -1,4 +1,5 @@
-import Card from './Card.js'
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
 
 const initialCards = [
   {
@@ -49,23 +50,37 @@ const addInputArray = [addInputTitle, addInputLink];
 const addCardPopupCloseBtn = addCardPopup.querySelector('.popup__close-btn');
 
 const imagePopup = document.querySelector('#view-popup');
-const imagePopupImg = imagePopup.querySelector('img');
-const imagePopupCaption = imagePopup.querySelector('figcaption');
 const imagePopupCloseBtn = imagePopup.querySelector('.popup__close-btn');
 
 const photos = document.querySelector('.photos');
 
+const formSettings = {
+  formSelector: 'form',
+  inputSelector: 'form__input',
+  submitButtonSelector: 'form__button',
+  inactiveButtonClass: 'form__button_disabled',
+  inputErrorClass: 'form__input_type_error',
+  errorClass: 'form__error_visible'
+};
 
+const profileFormValidator = new FormValidator(formSettings, editForm);
+const addCardFormValidator = new FormValidator(formSettings, addForm);
+
+profileFormValidator.enableValidation();
+addCardFormValidator.enableValidation();
+
+// initial cards rendering
 initialCards.forEach((cardData) => {
   const card = new Card(cardData, '#card-template');
-  photos.prepend(card.createCard('#view-popup'));
+  photos.prepend(card.createCard(imagePopup));
 });
+
 
 // open profile popup
 profilePopupOpenBtn.addEventListener('click', function (event) {
   addDataToPopupFromProfile();
-  setSubmitBtnState(editInputArray, editSubmitBtn, 'form__button_disabled');
-  clearErrors(editInputArray, 'form__input_type_error', 'form__error_visible');
+  profileFormValidator.setSubmitBtnState(editInputArray, editSubmitBtn, 'form__button_disabled');
+  profileFormValidator.clearErrors(editInputArray, 'form__input_type_error', 'form__error_visible');
   openPopup(profilePopup);
 });
 // save data and close profile popup
@@ -81,16 +96,17 @@ profilePopupCloseBtn.addEventListener('click', function (event) {
 // close profile popup by overlay
 profilePopup.addEventListener('click', closePopupByOverlay);
 
+
 // open add card popup
 addCardPopupOpenBtn.addEventListener('click', function (event) {
-  setSubmitBtnState(addInputArray, addSubmitBtn, 'form__button_disabled');
+  addCardFormValidator.setSubmitBtnState(addInputArray, addSubmitBtn, 'form__button_disabled');
   openPopup(addCardPopup);
 });
 // add card and close add card popup
 addForm.addEventListener('submit', function (event) {
   event.preventDefault();
   const card = new Card(getCardDataFromAddForm(), '#card-template');
-  photos.prepend(card.createCard('#view-popup'));
+  photos.prepend(card.createCard(imagePopup));
   addForm.reset();
   closePopup(addCardPopup);
 });
@@ -100,6 +116,7 @@ addCardPopupCloseBtn.addEventListener('click', function (event) {
 });
 // close add card popup by overlay
 addCardPopup.addEventListener('click', closePopupByOverlay);
+
 
 // close image popup
 imagePopupCloseBtn.addEventListener('click', function (event) {
