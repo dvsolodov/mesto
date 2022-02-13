@@ -67,8 +67,7 @@ addCardFormValidator.enableValidation();
 
 // initial cards rendering
 initialCards.forEach((cardData) => {
-  const card = new Card(cardData, '#card-template');
-  photos.prepend(card.createCard(imagePopup));
+  photos.prepend(createCard(cardData));
 });
 
 
@@ -101,8 +100,7 @@ addCardPopupOpenBtn.addEventListener('click', function (event) {
 // add card and close add card popup
 addForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  const card = new Card(getCardDataFromAddForm(), '#card-template');
-  photos.prepend(card.createCard(imagePopup));
+  photos.prepend(createCard(getCardDataFromAddForm()));
   addForm.reset();
   closePopup(addCardPopup);
 });
@@ -164,4 +162,9 @@ function closePopupByOverlay() {
   if (event.currentTarget === event.target) {
     closePopup(event.currentTarget);
   }
+}
+
+function createCard(cardData) {
+  const card = new Card(cardData, '#card-template');
+  return card.createCard(imagePopup);
 }
