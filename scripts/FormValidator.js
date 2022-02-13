@@ -42,6 +42,7 @@ export default class FormValidator {
       this._hideError(inputElement, errorElement, obj.inputErrorClass, obj.errorClass);
     }
   }
+
   _showError = (inputElement, errorElement, errorMessage, inputErrorClass, errorClass) => {
     inputElement.classList.add(inputErrorClass);
     errorElement.textContent = errorMessage;
