@@ -1,32 +1,6 @@
+import initialCards from './cards-data.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'images/photos/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'images/photos/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'images/photos/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'images/photos/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'images/photos/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'images/photos/baikal.jpg'
-  }
-];
 
 const profileName = document.querySelector('#profile-info-name');
 const profileAbout = document.querySelector('#profile-info-about');
