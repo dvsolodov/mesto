@@ -1,4 +1,4 @@
-import Card from './Card.js';
+import Card from './Card.js'
 
 const initialCards = [
   {
@@ -55,9 +55,11 @@ const imagePopupCloseBtn = imagePopup.querySelector('.popup__close-btn');
 
 const photos = document.querySelector('.photos');
 
-const cardTemplate = document.querySelector('#card-template').content;
 
-renderPhotos();
+initialCards.forEach((cardData) => {
+  const card = new Card(cardData, '#card-template');
+  photos.prepend(card.createCard('#view-popup'));
+});
 
 // open profile popup
 profilePopupOpenBtn.addEventListener('click', function (event) {
@@ -87,9 +89,8 @@ addCardPopupOpenBtn.addEventListener('click', function (event) {
 // add card and close add card popup
 addForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  const cardData = getCardDataFromAddForm();
-  const newCard = createCard(cardData);
-  photos.prepend(newCard);
+  const card = new Card(getCardDataFromAddForm(), '#card-template');
+  photos.prepend(card.createCard('#view-popup'));
   addForm.reset();
   closePopup(addCardPopup);
 });
@@ -119,12 +120,6 @@ function saveDataToProfileFromPopup() {
   profileAbout.textContent = editInputAbout.value;
 }
 
-function addDataToPopupFromPhoto(img) {
-  imagePopupImg.src = img.src;
-  imagePopupImg.alt = img.alt;
-  imagePopupCaption.textContent = img.alt;
-}
-
 function getCardDataFromAddForm() {
   return {
     name: addInputTitle.value,
@@ -142,47 +137,6 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-function deleteCard(img) {
-  img.closest('.photo').remove();
-}
-
-function toggleLike(btn) {
-  btn.classList.toggle('photo__like-btn_active');
-}
-
-function renderPhotos() {
-  initialCards.forEach(function(cardData) {
-    const newCard = createCard(cardData);
-    photos.prepend(newCard);
-  })
-}
-
-function createCard(cardData) {
-  const card = cardTemplate.cloneNode(true);
-  const cardImg = card.querySelector('.photo__img');
-  const cardTitle = card.querySelector('.photo__title');
-  const cardDeleteBtn = card.querySelector('.photo__delete-btn');
-  const cardLikeBtn = card.querySelector('.photo__like-btn');
-
-  cardImg.src = cardData.link;
-  cardImg.alt = cardTitle.textContent = cardData.name;
-
-  // open image popup
-  cardImg.addEventListener('click', function(event) {
-    addDataToPopupFromPhoto(cardImg);
-    openPopup(imagePopup);
-  });
-  // delete a card
-  cardDeleteBtn.addEventListener('click', function (event) {
-    deleteCard(cardDeleteBtn);
-  });
-  // toggle a like
-  cardLikeBtn.addEventListener('click', function (event) {
-    toggleLike(cardLikeBtn);
-  });
-
-  return card;
-}
 
 // handle the event when the esc key is pressed
 function closePopupByEscKey() {
