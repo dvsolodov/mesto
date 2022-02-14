@@ -1,28 +1,28 @@
+import {
+  addDataToPopupFromProfile,
+  saveDataToProfileFromPopup,
+  getCardDataFromAddForm,
+  openPopup,
+  closePopup,
+  closePopupByOverlay,
+  createCard
+} from './functions.js';
+import {
+  popupEditPrifileOpenBtn,
+  popupAddCardOpenBtn,
+  popupEditProfile,
+  formEditProfile,
+  popupEditProfileCloseBtn,
+  popupAddCard,
+  formAddCard,
+  popupAddCardCloseBtn,
+  popupViewImage,
+  popupViewImageCloseBtn,
+  photos
+} from './DOM-elements.js';
 import initialCards from './cards-data.js';
-import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 
-const profileName = document.querySelector('#profile-info-name');
-const profileAbout = document.querySelector('#profile-info-about');
-const popupEditPrifileOpenBtn = document.querySelector('#edit-popup-btn');
-const popupAddCardOpenBtn = document.querySelector('#add-popup-btn');
-
-const popupEditProfile = document.querySelector('#edit-popup');
-const formEditProfile = popupEditProfile.querySelector('form');
-const formEditProfileInputName = formEditProfile.querySelector('#input-name');
-const formEditProfileInputAbout = formEditProfile.querySelector('#input-about');
-const popupEditProfileCloseBtn = popupEditProfile.querySelector('.popup__close-btn');
-
-const popupAddCard = document.querySelector('#add-popup');
-const formAddCard = popupAddCard.querySelector('form');
-const formAddCardInputTitle = formAddCard.querySelector('#input-title');
-const formAddCardInputLink = formAddCard.querySelector('#input-link');
-const popupAddCardCloseBtn = popupAddCard.querySelector('.popup__close-btn');
-
-const popupViewImage = document.querySelector('#view-popup');
-const popupViewImageCloseBtn = popupViewImage.querySelector('.popup__close-btn');
-
-const photos = document.querySelector('.photos');
 
 const formSettings = {
   formSelector: 'form',
@@ -93,52 +93,3 @@ popupViewImageCloseBtn.addEventListener('click', function (event) {
 // close image popup by overlay
 popupViewImage.addEventListener('click', closePopupByOverlay);
 
-
-// functions
-function addDataToPopupFromProfile() {
-  formEditProfileInputName.value = profileName.textContent;
-  formEditProfileInputAbout.value = profileAbout.textContent;
-}
-
-function saveDataToProfileFromPopup() {
-  profileName.textContent = formEditProfileInputName.value;
-  profileAbout.textContent = formEditProfileInputAbout.value;
-}
-
-function getCardDataFromAddForm() {
-  return {
-    name: formAddCardInputTitle.value,
-    link: formAddCardInputLink.value
-  };
-}
-
-function openPopup(popup) {
-  document.addEventListener('keydown', closePopupByEscKey);
-  popup.classList.add('popup_opened');
-}
-
-function closePopup(popup) {
-  document.removeEventListener('keydown', closePopupByEscKey);
-  popup.classList.remove('popup_opened');
-}
-
-
-// handle the event when the esc key is pressed
-function closePopupByEscKey() {
-  if (event.key === 'Escape') {
-    const popupOpened = document.querySelector('.popup_opened');
-    closePopup(popupOpened);
-  }
-}
-
-// handle the event when a overlay is clicked
-function closePopupByOverlay() {
-  if (event.currentTarget === event.target) {
-    closePopup(event.currentTarget);
-  }
-}
-
-function createCard(cardData) {
-  const card = new Card(cardData, '#card-template');
-  return card.createCard(popupViewImage);
-}

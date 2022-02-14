@@ -1,3 +1,6 @@
+import {popupViewImage, popupImg, popupCaption} from './DOM-elements.js';
+import {closePopupByEscKey, openPopup} from './functions.js';
+
 export default class Card {
   constructor(cardData, templateSelector) {
     this._data = cardData;
@@ -8,8 +11,7 @@ export default class Card {
     this._btnLike = this._card.querySelector('.photo__like-btn');
   }
 
-  createCard = (popup) => {
-    this._popup = popup;
+  createCard = () => {
     this._img.src = this._data.link;
     this._img.alt = this._title.textContent = this._data.name;
 
@@ -25,19 +27,10 @@ export default class Card {
   }
 
   _openPopup = () => {
-    this._popupImg = this._popup.querySelector('#photo-img');
-    this._popupCaption = this._popup.querySelector('#photo-caption');
-    this._popupImg.src = this._img.src;
-    this._popupImg.alt = this._popupCaption.textContent = this._img.alt;
-    this._setEventListeners(document, 'keydown', this._closePopup);
-    this._popup.classList.add('popup_opened');
-  }
-
-  _closePopup = () => {
-    if (event.key === 'Escape') {
-      const openedPopup = document.querySelector('.popup_opened');
-      this._popup.classList.remove('popup_opened');
-    }
+    popupImg.src = this._img.src;
+    popupImg.alt = popupCaption.textContent = this._img.alt;
+    this._setEventListeners(document, 'keydown', closePopupByEscKey);
+    openPopup(popupViewImage);
   }
 
   _deleteCard = () => {
