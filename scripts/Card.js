@@ -15,21 +15,20 @@ export default class Card {
     this._img.src = this._data.link;
     this._img.alt = this._title.textContent = this._data.name;
 
-    this._setEventListeners(this._img, 'click', this._openPopup);
-    this._setEventListeners(this._btnDelete, 'click', this._deleteCard);
-    this._setEventListeners(this._btnLike, 'click', this._toggleLike);
+    this._setEventListeners();
 
     return this._card;
   }
 
-  _setEventListeners(element, event, callBack) {
-    element.addEventListener(event, callBack);
+  _setEventListeners = () => {
+    this._img.addEventListener('click', this._openPopup);
+    this._btnDelete.addEventListener('click', this._deleteCard);
+    this._btnLike.addEventListener('click', this._toggleLike);
   }
 
   _openPopup = () => {
     popupImg.src = this._img.src;
     popupImg.alt = popupCaption.textContent = this._img.alt;
-    this._setEventListeners(document, 'keydown', closePopupByEscKey);
     openPopup(popupViewImage);
   }
 
