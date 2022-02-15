@@ -4,7 +4,7 @@ import {closePopupByEscKey, openPopup} from './functions.js';
 export default class Card {
   constructor(cardData, templateSelector) {
     this._data = cardData;
-    this._card = document.querySelector(templateSelector).content.cloneNode(true);
+    this._card = document.querySelector(templateSelector).content.cloneNode(true).querySelector('.photo');
     this._img = this._card.querySelector('.photo__img');
     this._title = this._card.querySelector('.photo__title');
     this._btnDelete = this._card.querySelector('.photo__delete-btn');
@@ -34,7 +34,7 @@ export default class Card {
   }
 
   _deleteCard = () => {
-    this._img.closest('.photo').remove();
+    this._card.remove();
   }
 
   _toggleLike = () => {
