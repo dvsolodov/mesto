@@ -35,14 +35,14 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
-function closePopupByEscKey() {
+function closePopupByEscKey(event) {
   if (event.key === 'Escape') {
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
   }
 }
 
-function closePopupByOverlay() {
+function closePopupByOverlay(event) {
   if (event.currentTarget === event.target) {
     closePopup(event.currentTarget);
   }
