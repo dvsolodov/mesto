@@ -1,43 +1,37 @@
-import {popupViewImage, popupImg, popupCaption} from '../utils/DOM-elements.js';
-import {closePopupByEscKey, openPopup} from '../utils/utils.js';
-
 export default class Card {
-  constructor(cardData, templateSelector) {
+  constructor({cardData, handleCardClick}, templateSelector) {
     this._data = cardData;
     this._card = document.querySelector(templateSelector).content.cloneNode(true).querySelector('.photo');
     this._img = this._card.querySelector('.photo__img');
     this._title = this._card.querySelector('.photo__title');
     this._btnDelete = this._card.querySelector('.photo__delete-btn');
     this._btnLike = this._card.querySelector('.photo__like-btn');
+    this._handleCardClick = handleCardClick;
   }
 
-  createCard = () => {
+  createCard() {
     this._img.src = this._data.link;
     this._img.alt = this._title.textContent = this._data.name;
-
     this._setEventListeners();
 
     return this._card;
   }
 
-  _setEventListeners = () => {
-    this._img.addEventListener('click', this._openPopup);
-    this._btnDelete.addEventListener('click', this._deleteCard);
-    this._btnLike.addEventListener('click', this._toggleLike);
+  getImg() {
+    return this._img;
   }
 
-  _openPopup = () => {
-    popupImg.src = this._img.src;
-    popupImg.alt = popupCaption.textContent = this._img.alt;
-    openPopup(popupViewImage);
+  _setEventListeners() {
+    this._img.addEventListener('click', this._handleCardClick.bind(this));
+    this._btnDelete.addEventListener('click', this._deleteCard.bind(this));
+    this._btnLike.addEventListener('click', this._toggleLike.bind(this));
   }
 
-  _deleteCard = () => {
+  _deleteCard() {
     this._card.remove();
   }
 
-  _toggleLike = () => {
+  _toggleLike() {
     this._btnLike.classList.toggle('photo__like-btn_active');
   }
-
 }
