@@ -1,3 +1,4 @@
+import './index.css';
 import {
   popupEditPrifileOpenBtn,
   popupAddCardOpenBtn,
@@ -25,6 +26,7 @@ const formSettings = {
 };
 
 
+const userInfo = new UserInfo({nameSelector: '#profile-info-name', aboutUserSelector: '#profile-info-about'});
 const popupWithImage = new PopupWithImage(popupWithImageSelector);
 const cardsList = new Section({
     items: initialCards,
@@ -85,14 +87,12 @@ popupEditPrifileOpenBtn.addEventListener('click', function (event) {
   const popupEditProfile = new PopupWithForm({
       submitCallback: (event) => {
         event.preventDefault();
-        const userInfo = new UserInfo({nameSelector: '#profile-info-name', aboutUserSelector: '#profile-info-about'});
         userInfo.setUserInfo(popupEditProfile.getDataFromForm());
         popupEditProfile.close();
       }
     },
     popupEditProfileSelector
   );
-  const userInfo = new UserInfo({nameSelector: '#profile-info-name', aboutUserSelector: '#profile-info-about'});
   popupEditProfile.setDataInForm(userInfo.getUserInfo());
   const formEditProfileValidator = new FormValidator(formSettings, popupEditProfile.getForm());
   formEditProfileValidator.enableValidation();

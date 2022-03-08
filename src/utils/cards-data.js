@@ -1,26 +1,33 @@
+const arkhyz = new URL('../images/photos/arkhyz.jpg', import.meta.url)
+const ivanovo = new URL('../images/photos/ivanovo.jpg', import.meta.url)
+const chelyabinsk_oblast = new URL('../images/photos/chelyabinsk-oblast.jpg', import.meta.url)
+const kamchatka = new URL('../images/photos/kamchatka.jpg', import.meta.url)
+const kholmogorsky_rayon = new URL('../images/photos/kholmogorsky-rayon.jpg', import.meta.url)
+const baikal = new URL('../images/photos/baikal.jpg', import.meta.url)
+
 export default [
   {
     name: 'Архыз',
-    link: './images/photos/arkhyz.jpg'
+    link: arkhyz
   },
   {
     name: 'Челябинская область',
-    link: './images/photos/chelyabinsk-oblast.jpg'
+    link: chelyabinsk_oblast
   },
   {
     name: 'Иваново',
-    link: './images/photos/ivanovo.jpg'
+    link: ivanovo
   },
   {
     name: 'Камчатка',
-    link: './images/photos/kamchatka.jpg'
+    link: kamchatka
   },
   {
     name: 'Холмогорский район',
-    link: './images/photos/kholmogorsky-rayon.jpg'
+    link: kholmogorsky_rayon
   },
   {
     name: 'Байкал',
-    link: './images/photos/baikal.jpg'
+    link: baikal
   }
 ];

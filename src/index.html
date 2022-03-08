@@ -8,16 +8,15 @@
     <meta name="description" content="проектная работа №4">
     <meta name="keywords" content="проектная, работа, 4, яндекс, практикум">
     <title>Mesto</title>
-    <link rel="stylesheet" href="./pages/index.css">
 </head>
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/header-logo.svg" alt="логотип">
+    <img class="header__logo" src="<%=require('./images/header-logo.svg')%>" alt="Логотип">
   </header><!--end:header-->
 
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Жак-Ив Кусто">
+      <img class="profile__avatar" src="<%=require('./images/profile-avatar.jpg')%>" alt="Жак-Ив Кусто">
       <div class="profile-info">
         <h1 class="profile-info__name" id="profile-info-name">Жак-Ив Кусто</h1>
         <p class="profile-info__about" id="profile-info-about">Исследователь океана</p>
@@ -118,7 +117,5 @@
       <button class="photo__delete-btn" type="button" aria-label="Удалить"></button>
     </article><!--end:photo-->
   </template>
-
-  <script src="./pages/index.js" type="module"></script>
 </body>
 </html>
