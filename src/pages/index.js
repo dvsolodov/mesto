@@ -6,6 +6,7 @@ import {
   popupAddCardSelector,
   popupEditProfileSelector,
   cardTemplateSelector,
+  formSettings
 } from '../utils/constants.js';
 import initialCards from '../utils/cards-data.js';
 import FormValidator from '../components/FormValidator.js';
@@ -14,17 +15,6 @@ import Card from '../components/Card.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
-
-
-const formSettings = {
-  formSelector: 'form',
-  inputSelector: 'form__input',
-  buttonSubmitSelector: 'form__button',
-  buttonInactiveClass: 'form__button_disabled',
-  inputErrorClass: 'form__input_type_error',
-  errorClass: 'form__error_visible'
-};
-
 
 const userInfo = new UserInfo({nameSelector: '#profile-info-name', aboutUserSelector: '#profile-info-about'});
 const popupWithImage = new PopupWithImage(popupWithImageSelector);
