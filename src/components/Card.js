@@ -17,18 +17,17 @@ export default class Card {
     return this._card;
   }
 
-  getImg() {
-    return this._img;
-  }
-
   _setEventListeners() {
-    this._img.addEventListener('click', this._handleCardClick.bind(this));
+    this._img.addEventListener('click', () => {
+      this._handleCardClick(this._data);
+    });
     this._btnDelete.addEventListener('click', this._deleteCard.bind(this));
     this._btnLike.addEventListener('click', this._toggleLike.bind(this));
   }
 
   _deleteCard() {
     this._card.remove();
+    this._card = null
   }
 
   _toggleLike() {

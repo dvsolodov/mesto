@@ -19,8 +19,8 @@ import UserInfo from '../components/UserInfo.js';
 const createCardElement = (cardData) => {
   const card = new Card({
       cardData: cardData,
-      handleCardClick: () => {
-        popupWithImage.open(card.getImg());
+      handleCardClick: (imgData) => {
+        popupWithImage.open(imgData);
       }
     },
     cardTemplateSelector
@@ -29,40 +29,38 @@ const createCardElement = (cardData) => {
   return card.createCard();
 }
 
-const cardsList = (items) => {
-   const list = new Section({
-      items: items,
-      renderer: (item) => {
-        list.addItem(createCardElement(item));
-      }
-    },
-    '.photos'
-  );
-
-  return list;
-}
+const cardsList = new Section({
+    items: initialCards,
+    renderer: (item) => {
+      cardsList.addItem(createCardElement(item));
+    }
+  },
+  '.photos'
+);
 
 const popupWithImage = new PopupWithImage(popupWithImageSelector);
 const userInfo = new UserInfo({nameSelector: '#profile-info-name', aboutUserSelector: '#profile-info-about'});
 const popupEditProfile = new PopupWithForm({
-    submitCallback: (event) => {
-      event.preventDefault();
-      userInfo.setUserInfo(popupEditProfile.getDataFromForm());
+    submitCallback: (formData) => {
+      userInfo.setUserInfo(formData);
       popupEditProfile.close();
     }
   },
   popupEditProfileSelector
 );
 const popupAddCard = new PopupWithForm({
-    submitCallback: (event) => {
-      event.preventDefault();
-      const cards = cardsList(popupAddCard.getDataFromForm());
-      cards.renderItems();
+    submitCallback: (cardData) => {
+      const cardElement = createCardElement(cardData);
+      cardsList.addItem(cardElement);
       popupAddCard.close();
     }
   },
   popupAddCardSelector
 );
+
+popupAddCard.setEventListeners();
+popupWithImage.setEventListeners();
+popupEditProfile.setEventListeners();
 
 const formAddCardValidator = new FormValidator(formSettings, popupAddCard.getForm());
 const formEditProfileValidator = new FormValidator(formSettings, popupEditProfile.getForm());
@@ -75,8 +73,7 @@ formEditProfileValidator.setSubmitBtnState();
 
 
 // initial cards rendering
-const cards = cardsList(initialCards);
-cards.renderItems();
+cardsList.renderItems();
 
 popupAddCardOpenBtn.addEventListener('click', function (event) {
   popupAddCard.open();
