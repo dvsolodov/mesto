@@ -68,19 +68,19 @@ const formEditProfileValidator = new FormValidator(formSettings, popupEditProfil
 formAddCardValidator.enableValidation();
 formEditProfileValidator.enableValidation();
 
-formAddCardValidator.setSubmitBtnState();
-formEditProfileValidator.setSubmitBtnState();
 
 
 // initial cards rendering
 cardsList.renderItems();
 
 popupAddCardOpenBtn.addEventListener('click', function (event) {
+  formAddCardValidator.setSubmitBtnState(); // initial validation of form fields and setting button state
   popupAddCard.open();
 });
 
 popupEditPrifileOpenBtn.addEventListener('click', function (event) {
   popupEditProfile.setDataInForm(userInfo.getUserInfo());
+  formEditProfileValidator.setSubmitBtnState(); // initial validation of form fields and setting button state
   popupEditProfile.open();
 });
 
