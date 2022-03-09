@@ -25,6 +25,7 @@ export default class FormValidator {
       this._hideSubmitButton();
       return;
     }
+    this.clearErrors();
     this._showSubmitButton();
   }
 
