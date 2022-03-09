@@ -28,7 +28,10 @@ export default class Popup {
   }
 
   setEventListeners() {
-    this._popupCloseIcon.addEventListener('click', this.close.bind(this));
-    this._popup.addEventListener('click', this._closeByOverlay.bind(this));
+    this._popup.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__close-btn')) {
+        this.close();
+      }
+    });
   }
 }
