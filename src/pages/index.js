@@ -6,15 +6,16 @@ import {
   popupAddCardSelector,
   popupEditProfileSelector,
   cardTemplateSelector,
-  formSettings
+  formSettings,
+  options
 } from '../utils/constants.js';
-import initialCards from '../utils/cards-data.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
 import Card from '../components/Card.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+import Api from '../components/Api.js';
 
 const createCardElement = (cardData) => {
   const card = new Card({
@@ -30,7 +31,7 @@ const createCardElement = (cardData) => {
 }
 
 const cardsList = new Section({
-    items: initialCards,
+    items: [],
     renderer: (item) => {
       cardsList.addItem(createCardElement(item));
     }
@@ -38,10 +39,12 @@ const cardsList = new Section({
   '.photos'
 );
 
+const api = new Api(options);
 const popupWithImage = new PopupWithImage(popupWithImageSelector);
 const userInfo = new UserInfo({nameSelector: '#profile-info-name', aboutUserSelector: '#profile-info-about'});
 const popupEditProfile = new PopupWithForm({
     submitCallback: (formData) => {
+      api.editProfile(formData);
       userInfo.setUserInfo(formData);
       popupEditProfile.close();
     }
@@ -69,9 +72,19 @@ formAddCardValidator.enableValidation();
 formEditProfileValidator.enableValidation();
 
 
+// initial profile rendering
+api.getProfile()
+  .then((data) => userInfo.setUserInfo({name: data.name, about: data.about}));
 
 // initial cards rendering
-cardsList.renderItems();
+api.getInitialCards()
+  .then((data) => {
+      data.forEach((card) => {
+        const cardData = {name: card.name, link: card.link};
+        cardsList.addItem(createCardElement(cardData));
+      });
+    }
+  );
 
 popupAddCardOpenBtn.addEventListener('click', function (event) {
   formAddCardValidator.setSubmitBtnState(); // initial validation of form fields and setting button state
