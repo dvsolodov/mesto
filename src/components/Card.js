@@ -6,6 +6,7 @@ export default class Card {
     this._title = this._card.querySelector('.photo__title');
     this._btnDelete = this._card.querySelector('.photo__delete-btn');
     this._btnLike = this._card.querySelector('.photo__like-btn');
+    this._likesCounter = this._card.querySelector('.photo__likes-counter');
     this._handleCardClick = handleCardClick;
     this._handleCardDelete = handleCardDelete;
   }
@@ -13,9 +14,14 @@ export default class Card {
   createCard() {
     this._img.src = this._data.link;
     this._img.alt = this._title.textContent = this._data.name;
+    this._setLikesCounter(this._data.likes);
     this._setEventListeners();
 
     return this._card;
+  }
+
+  _setLikesCounter(likesNumber) {
+    this._likesCounter.textContent = likesNumber;
   }
 
   _setEventListeners() {

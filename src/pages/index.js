@@ -122,7 +122,8 @@ api.getProfile()
 api.getInitialCards()
   .then((data) => {
       data.forEach((card) => {
-        const cardData = {name: card.name, link: card.link, id: card._id};
+        const likesNumber = card.likes.length;
+        const cardData = {name: card.name, link: card.link, id: card._id, likes: likesNumber};
         cardsList.addItem(createCardElement(cardData));
       });
     }
