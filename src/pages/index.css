@@ -15,6 +15,8 @@
 
 /* begin:profile */
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__avatar-wrap/profile__avatar-wrap.css);
+@import url(../blocks/profile/__avatar-overlay/profile__avatar-overlay.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__add-btn/profile__add-btn.css);
 /* end:profile */
@@ -44,8 +46,10 @@
 @import url(../blocks/photo/__img/photo__img.css);
 @import url(../blocks/photo/__caption/photo__caption.css);
 @import url(../blocks/photo/__title/photo__title.css);
+@import url(../blocks/photo/__likes-block/photo__likes-block.css);
 @import url(../blocks/photo/__like-btn/photo__like-btn.css);
 @import url(../blocks/photo/__like-btn/_active/photo__like-btn_active.css);
+@import url(../blocks/photo/__likes-counter/photo__likes-counter.css);
 @import url(../blocks/photo/__delete-btn/photo__delete-btn.css);
 /* end:photo */
 
@@ -57,6 +61,7 @@
 /* begin:form */
 @import url(../blocks/form/form.css);
 @import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__title/_confirm/form__title_confirm.css);
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__input/_type/form__input_type_error.css);
 @import url(../blocks/form/__button/form__button.css);

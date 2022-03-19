@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({cardData, handleCardClick}, templateSelector) {
+  constructor({cardData, handleCardClick, handleCardDelete}, templateSelector) {
     this._data = cardData;
     this._card = document.querySelector(templateSelector).content.cloneNode(true).querySelector('.photo');
     this._img = this._card.querySelector('.photo__img');
@@ -7,6 +7,7 @@ export default class Card {
     this._btnDelete = this._card.querySelector('.photo__delete-btn');
     this._btnLike = this._card.querySelector('.photo__like-btn');
     this._handleCardClick = handleCardClick;
+    this._handleCardDelete = handleCardDelete;
   }
 
   createCard() {
@@ -26,6 +27,8 @@ export default class Card {
   }
 
   _deleteCard() {
+    const cardData = {id: this._data.id}
+    this._handleCardDelete();
     this._card.remove();
     this._card = null
   }
