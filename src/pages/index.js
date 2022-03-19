@@ -20,6 +20,7 @@ import Section from '../components/Section.js';
 import Card from '../components/Card.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
+import PopupConfirmDeletion from '../components/PopupConfirmDeletion.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 
@@ -29,8 +30,10 @@ const createCardElement = (cardData) => {
       handleCardClick: (imgData) => {
         popupWithImage.open(imgData);
       },
-      handleCardDelete: (imgData) => {
-        popupConfirm.open(imgData);
+      handleCardDeletion: (card) => {
+        popupConfirmDeletion.card = card;
+        popupConfirmDeletion.setDataInForm({confirm: card.getId()});
+        popupConfirmDeletion.open();
       }
     },
     cardTemplateSelector
@@ -56,10 +59,12 @@ const userInfo = new UserInfo({
   avatarSelector: avatarSelector
 });
 
-const popupConfirm = new PopupWithForm({
-    submitCallback: (cardData) => {
-      api.deleteCard(cardData);
-      popupConfirm.close();
+const popupConfirmDeletion = new PopupConfirmDeletion({
+    submitCallback: () => {
+      const card = popupConfirmDeletion.card;
+      api.deleteCard(card.getId());
+      card.deleteCard();
+      popupConfirmDeletion.close();
     }
   },
   popupConfirmSelector
@@ -67,7 +72,6 @@ const popupConfirm = new PopupWithForm({
 
 const popupEditAvatar = new PopupWithForm({
     submitCallback: (formData) => {
-      console.log(formData);
       api.editAvatar(formData);
       userInfo.setAvatar(formData);
       popupEditAvatar.close();
@@ -88,6 +92,7 @@ const popupEditProfile = new PopupWithForm({
 
 const popupAddCard = new PopupWithForm({
     submitCallback: (cardData) => {
+      cardData.ownerId = cardData.myId = userInfo.getUserInfo().userId;
       const cardElement = createCardElement(cardData);
       cardsList.addItem(cardElement);
       api.addCard(cardData);
@@ -101,6 +106,7 @@ popupEditAvatar.setEventListeners();
 popupAddCard.setEventListeners();
 popupWithImage.setEventListeners();
 popupEditProfile.setEventListeners();
+popupConfirmDeletion.setEventListeners();
 
 const formEditAvatarValidator = new FormValidator(formSettings, popupEditAvatar.getForm());
 const formAddCardValidator = new FormValidator(formSettings, popupAddCard.getForm());
@@ -114,7 +120,7 @@ formEditProfileValidator.enableValidation();
 // initial profile rendering
 api.getProfile()
   .then((data) => {
-    userInfo.setUserInfo({name: data.name, about: data.about});
+    userInfo.setUserInfo({name: data.name, about: data.about, userId: data['_id']});
     userInfo.setAvatar({link: data.avatar, name: data.name});
   })
 
@@ -122,8 +128,14 @@ api.getProfile()
 api.getInitialCards()
   .then((data) => {
       data.forEach((card) => {
-        const likesNumber = card.likes.length;
-        const cardData = {name: card.name, link: card.link, id: card._id, likes: likesNumber};
+        const cardData = {
+          name: card.name,
+          link: card.link,
+          id: card['_id'],
+          ownerId: card.owner['_id'],
+          myId: userInfo.getUserInfo().userId,
+          likes: card.likes.length
+        };
         cardsList.addItem(createCardElement(cardData));
       });
     }

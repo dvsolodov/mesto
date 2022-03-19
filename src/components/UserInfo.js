@@ -9,12 +9,14 @@ export default class UseInfo {
     return {
       name: this._name.textContent,
       about: this._aboutUser.textContent,
+      userId: this._userId
     };
   }
 
   setUserInfo(dataObj){
     this._name.textContent = dataObj.name;
     this._aboutUser.textContent = dataObj.about;
+    this._userId = dataObj.userId;
   }
 
   getAvatar() {

@@ -51,6 +51,7 @@
 @import url(../blocks/photo/__like-btn/_active/photo__like-btn_active.css);
 @import url(../blocks/photo/__likes-counter/photo__likes-counter.css);
 @import url(../blocks/photo/__delete-btn/photo__delete-btn.css);
+@import url(../blocks/photo/__delete-btn/_invisible/photo__delete-btn_invisible.css);
 /* end:photo */
 
 /* begin:footer */

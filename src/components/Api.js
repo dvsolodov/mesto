@@ -43,6 +43,15 @@ export default class Api {
       .catch(err => console.log(err));
   }
 
+  deleteCard(cardId) {
+    return fetch(this._baseUrl + this._paramCards + '/' + cardId, {
+        method: "DELETE",
+        headers: this._headers
+      })
+      .then((response) => this._checkResponse(response))
+      .catch(err => console.log(err));
+  }
+
   editAvatar(avatarObj) {
     console.log(avatarObj);
     return fetch(this._baseUrl + this._paramAvatar, {
@@ -52,10 +61,12 @@ export default class Api {
       })
       .then((response) => this._checkResponse(response))
       .catch(err => console.log(err));
-
   }
 
   _checkResponse(response) {
     return response.ok ? response.json() : Promise.reject(`Ошибка запроса: ${response.status}`);
   }
 }
+
+
+
