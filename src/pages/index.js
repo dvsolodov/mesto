@@ -25,8 +25,16 @@ import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 
 const createCardElement = (cardData) => {
+  const data = {
+    name: cardData.name,
+    link: cardData.link,
+    id: cardData['_id'],
+    ownerId: cardData.owner['_id'],
+    myId: userInfo.getUserInfo().userId,
+    likes: cardData.likes
+  };
   const card = new Card({
-      cardData: cardData,
+      cardData: data,
       handleCardClick: (imgData) => {
         popupWithImage.open(imgData);
       },
@@ -34,6 +42,12 @@ const createCardElement = (cardData) => {
         popupConfirmDeletion.card = card;
         popupConfirmDeletion.setDataInForm({confirm: card.getId()});
         popupConfirmDeletion.open();
+      },
+      handleMinusLike: (cardId) => {
+        return api.removeLike(cardId);
+      },
+      handlePlusLike: (cardId) => {
+        return api.addLike(cardId);
       }
     },
     cardTemplateSelector
@@ -62,8 +76,11 @@ const userInfo = new UserInfo({
 const popupConfirmDeletion = new PopupConfirmDeletion({
     submitCallback: () => {
       const card = popupConfirmDeletion.card;
-      api.deleteCard(card.getId());
-      card.deleteCard();
+      api.deleteCard(card.getId())
+        .then((result) => {
+          card.deleteCard();
+          popupConfirmDeletion.card = null;
+        });
       popupConfirmDeletion.close();
     }
   },
@@ -72,8 +89,10 @@ const popupConfirmDeletion = new PopupConfirmDeletion({
 
 const popupEditAvatar = new PopupWithForm({
     submitCallback: (formData) => {
-      api.editAvatar(formData);
-      userInfo.setAvatar(formData);
+      api.editAvatar(formData)
+        .then((result) => {
+          userInfo.setAvatar(result);
+        });
       popupEditAvatar.close();
     }
   },
@@ -82,8 +101,10 @@ const popupEditAvatar = new PopupWithForm({
 
 const popupEditProfile = new PopupWithForm({
     submitCallback: (formData) => {
-      api.editProfile(formData);
-      userInfo.setUserInfo(formData);
+      api.editProfile(formData)
+        .then((result) => {
+          userInfo.setUserInfo(result);
+        });
       popupEditProfile.close();
     }
   },
@@ -91,11 +112,12 @@ const popupEditProfile = new PopupWithForm({
 );
 
 const popupAddCard = new PopupWithForm({
-    submitCallback: (cardData) => {
-      cardData.ownerId = cardData.myId = userInfo.getUserInfo().userId;
-      const cardElement = createCardElement(cardData);
-      cardsList.addItem(cardElement);
-      api.addCard(cardData);
+    submitCallback: (formData) => {
+      api.addCard(formData)
+        .then((result) => {
+          const cardElement = createCardElement(result);
+          cardsList.addItem(cardElement);
+        });
       popupAddCard.close();
     }
   },
@@ -120,22 +142,14 @@ formEditProfileValidator.enableValidation();
 // initial profile rendering
 api.getProfile()
   .then((data) => {
-    userInfo.setUserInfo({name: data.name, about: data.about, userId: data['_id']});
-    userInfo.setAvatar({link: data.avatar, name: data.name});
+    userInfo.setUserInfo(data);
+    userInfo.setAvatar(data);
   })
 
 // initial cards rendering
 api.getInitialCards()
   .then((data) => {
-      data.forEach((card) => {
-        const cardData = {
-          name: card.name,
-          link: card.link,
-          id: card['_id'],
-          ownerId: card.owner['_id'],
-          myId: userInfo.getUserInfo().userId,
-          likes: card.likes.length
-        };
+      data.forEach((cardData) => {
         cardsList.addItem(createCardElement(cardData));
       });
     }

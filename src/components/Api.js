@@ -2,9 +2,10 @@ export default class Api {
   constructor(options) {
     this._baseUrl = options.url;
     this._token = options.token;
-    this._paramProfile = "users/me";
-    this._paramAvatar = "users/me/avatar";
-    this._paramCards = "cards";
+    this._paramProfile = "/users/me/";
+    this._paramAvatar = "/users/me/avatar/";
+    this._paramCards = "/cards/";
+    this._paramLikes = "/likes/";
     this._headers = {
       authorization: this._token,
       'Content-Type': 'application/json'
@@ -44,7 +45,7 @@ export default class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(this._baseUrl + this._paramCards + '/' + cardId, {
+    return fetch(this._baseUrl + this._paramCards + cardId, {
         method: "DELETE",
         headers: this._headers
       })
@@ -53,11 +54,29 @@ export default class Api {
   }
 
   editAvatar(avatarObj) {
-    console.log(avatarObj);
     return fetch(this._baseUrl + this._paramAvatar, {
         method: "PATCH",
         headers: this._headers,
         body: JSON.stringify({avatar: avatarObj.link})
+      })
+      .then((response) => this._checkResponse(response))
+      .catch(err => console.log(err));
+  }
+
+  addLike(cardId) {
+    return fetch(this._baseUrl + this._paramCards + cardId + this._paramLikes, {
+        method: "PUT",
+        headers: this._headers
+      })
+      .then((response) => this._checkResponse(response))
+      .catch(err => console.log(err));
+
+  }
+
+  removeLike(cardId) {
+    return fetch(this._baseUrl + this._paramCards + cardId + this._paramLikes, {
+        method: "DELETE",
+        headers: this._headers
       })
       .then((response) => this._checkResponse(response))
       .catch(err => console.log(err));

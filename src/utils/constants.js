@@ -21,7 +21,7 @@ const formSettings = {
 };
 
 const options = {
-  url: "https://mesto.nomoreparties.co/v1/cohort-37/",
+  url: "https://mesto.nomoreparties.co/v1/cohort-37",
   token: "7f6cc6de-c4ad-423a-8b4b-dcbd983f998a"
 };
 

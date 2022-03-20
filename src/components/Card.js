@@ -1,5 +1,5 @@
 export default class Card {
-  constructor({cardData, handleCardClick, handleCardDeletion}, templateSelector) {
+  constructor({cardData, handleCardClick, handleCardDeletion, handleMinusLike, handlePlusLike}, templateSelector) {
     this._data = cardData;
     this._card = document.querySelector(templateSelector).content.cloneNode(true).querySelector('.photo');
     this._img = this._card.querySelector('.photo__img');
@@ -9,6 +9,8 @@ export default class Card {
     this._likesCounter = this._card.querySelector('.photo__likes-counter');
     this._handleCardClick = handleCardClick;
     this._handleCardDeletion = handleCardDeletion;
+    this._handleMinusLike = handleMinusLike;
+    this._handlePlusLike = handlePlusLike;
   }
 
   createCard() {
@@ -33,8 +35,22 @@ export default class Card {
     return this._data.id;
   }
 
-  _setLikesCounter(likesNumber) {
-    this._likesCounter.textContent = likesNumber;
+  _setLikesCounter(likes) {
+    let iLikeIt = false;
+
+    for (let i = 0; i < likes.length; i++) {
+      if (likes[i]['_id'] === this._data.myId) {
+        this._btnLike.classList.add('photo__like-btn_active');
+        iLikeIt = true;
+        break;
+      }
+    }
+
+    if (!iLikeIt) {
+      this._btnLike.classList.remove('photo__like-btn_active');
+    }
+
+    this._likesCounter.textContent = likes.length;
   }
 
   _setEventListeners() {
@@ -50,6 +66,16 @@ export default class Card {
   }
 
   _toggleLike() {
-    this._btnLike.classList.toggle('photo__like-btn_active');
+    if (this._btnLike.classList.contains('photo__like-btn_active')) {
+      this._handleMinusLike(this.getId())
+        .then((result) => {
+          this._setLikesCounter(result.likes);
+        });
+    } else {
+      this._handlePlusLike(this.getId())
+        .then((result) => {
+          this._setLikesCounter(result.likes);
+        });
+    }
   }
 }
