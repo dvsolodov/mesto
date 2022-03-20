@@ -16,10 +16,13 @@
 
   <main class="content">
     <section class="profile">
-      <img class="profile__avatar" src="<%=require('./images/profile-avatar.jpg')%>" alt="Жак-Ив Кусто">
+      <div class="profile__avatar-wrap">
+        <div class="profile__avatar-overlay" id="edit-avatar-popup-btn"></div>
+        <img class="profile__avatar" id="profile-info-avatar" src="" alt="">
+      </div>
       <div class="profile-info">
-        <h1 class="profile-info__name" id="profile-info-name">Жак-Ив Кусто</h1>
-        <p class="profile-info__about" id="profile-info-about">Исследователь океана</p>
+        <h1 class="profile-info__name" id="profile-info-name"></h1>
+        <p class="profile-info__about" id="profile-info-about"></p>
         <button class="profile-info__edit-btn" id="edit-popup-btn" type="button" aria-label="Редактировать профиль"></button>
       </div><!--end:profile-info-->
       <button class="profile__add-btn" id="add-popup-btn" type="button" aria-label="Добавить картинку"></button>
@@ -59,7 +62,7 @@
           autocomplete="off"
         >
         <span class="form__error" id="error-input-about"></span>
-        <button class="form__button" type="submit">Сохранить</button>
+        <button class="form__button" type="submit" id="edit-profile-submit-btn">Сохранить</button>
       </form>
       <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
     </div>
@@ -89,7 +92,7 @@
           autocomplete="off"
         >
         <span class="form__error" id="error-input-link"></span>
-        <button class="form__button" type="submit">Сохранить</button>
+        <button class="form__button" type="submit" id="add-card-submit-btn">Сохранить</button>
       </form>
       <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
     </div>
@@ -105,6 +108,36 @@
     </div>
   </div><!--end:popup-->
 
+  <div class="popup" id="confirm-popup">
+    <div class="popup__container">
+      <form class="form" name="comfirm-form">
+        <h2 class="form__title form__title_confirm">Вы уверены?</h2>
+        <input class="form__input" type="hidden" name="_id" id="input-confirm">
+        <button class="form__button" type="submit">Да</button>
+      </form>
+      <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+    </div>
+  </div><!--end:popup-->
+
+  <div class="popup" id="edit-avatar-popup">
+    <div class="popup__container">
+      <form class="form" name="edit-avatar-form" novalidate>
+        <h2 class="form__title">Обновить аватар</h2>
+        <input class="form__input"
+          type="url"
+          name="link"
+          id="input-link"
+          placeholder="Ссылка на картинку"
+          required
+          autocomplete="off"
+        >
+        <span class="form__error" id="error-input-link"></span>
+        <button class="form__button" type="submit" id="edit-avatar-submit-btn">Сохранить</button>
+      </form>
+      <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
+    </div>
+  </div><!--end:popup-->
+
   <template id="card-template">
     <article class="photo">
       <div class="photo__img-wrapper">
@@ -112,7 +145,10 @@
       </div>
       <div class="photo__caption">
         <h2 class="photo__title"></h2>
-        <button class="photo__like-btn" type="button" aria-label="Нравится"></button>
+        <div class="photo__likes-block">
+          <button class="photo__like-btn" type="button" aria-label="Нравится"></button>
+          <span class="photo__likes-counter">0</span>
+        </div>
       </div>
       <button class="photo__delete-btn" type="button" aria-label="Удалить"></button>
     </article><!--end:photo-->

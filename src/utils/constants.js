@@ -1,10 +1,19 @@
+const popupEditAvatarOpenBtn = document.querySelector('#edit-avatar-popup-btn');
 const popupEditPrifileOpenBtn = document.querySelector('#edit-popup-btn');
 const popupAddCardOpenBtn = document.querySelector('#add-popup-btn');
+const popupEditProfileSubmitBtn = document.querySelector('#edit-profile-submit-btn');
+const popupAddCardSubmitBtn = document.querySelector('#add-card-submit-btn');
+const popupEditAvatarSubmitBtn = document.querySelector('#edit-avatar-submit-btn');
 
 const popupWithImageSelector = '#view-popup'
+const popupEditAvatarSelector = '#edit-avatar-popup';
 const popupAddCardSelector = '#add-popup'
-const popupEditProfileSelector = '#edit-popup'
+const popupEditProfileSelector = '#edit-popup';
+const popupConfirmSelector = '#confirm-popup';
 const cardTemplateSelector = '#card-template';
+const nameSelector = '#profile-info-name';
+const aboutSelector = '#profile-info-about';
+const avatarSelector = '#profile-info-avatar';
 const formSettings = {
   formSelector: 'form',
   inputSelector: 'form__input',
@@ -14,13 +23,27 @@ const formSettings = {
   errorClass: 'form__error_visible'
 };
 
+const options = {
+  url: "https://mesto.nomoreparties.co/v1/cohort-37",
+  token: "7f6cc6de-c4ad-423a-8b4b-dcbd983f998a"
+};
 
 export {
+  popupEditAvatarSubmitBtn,
+  popupEditProfileSubmitBtn,
+  popupAddCardSubmitBtn,
+  popupEditAvatarOpenBtn,
   popupEditPrifileOpenBtn,
   popupAddCardOpenBtn,
+  popupEditAvatarSelector,
   popupWithImageSelector,
   popupAddCardSelector,
   cardTemplateSelector,
   formSettings,
-  popupEditProfileSelector
+  popupEditProfileSelector,
+  popupConfirmSelector,
+  nameSelector,
+  aboutSelector,
+  avatarSelector,
+  options
 }
