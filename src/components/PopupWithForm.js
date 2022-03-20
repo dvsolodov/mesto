@@ -20,7 +20,7 @@ export default class PopupWithForm extends Popup {
 
   setDataInForm(obj) {
     for (let key in obj) {
-      const input = this._form.querySelector('#input-' + key);
+      const input = this._form.querySelector('[data-id=input-' + key + ']');
 
       if (input !== null) {
         input.value = obj[key];

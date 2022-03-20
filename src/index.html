@@ -18,7 +18,7 @@
     <section class="profile">
       <div class="profile__avatar-wrap">
         <div class="profile__avatar-overlay" id="edit-avatar-popup-btn"></div>
-        <img class="profile__avatar" id="profile-info-avatar" src="" alt="">
+        <img class="profile__avatar" id="profile-info-avatar" src="#" alt="Аватар">
       </div>
       <div class="profile-info">
         <h1 class="profile-info__name" id="profile-info-name"></h1>
@@ -43,25 +43,25 @@
         <input class="form__input"
           type="text"
           name="name"
-          id="input-name"
+          data-id="input-name"
           placeholder="Имя"
           minlength="2"
           maxlength="40"
           required
           autocomplete="off"
         >
-        <span class="form__error" id="error-input-name"></span>
+        <span class="form__error" data-id="error-input-name"></span>
         <input class="form__input"
           type="text"
           name="about"
-          id="input-about"
+          data-id="input-about"
           placeholder="Род занятий"
           minlength="2"
           maxlength="200"
           required
           autocomplete="off"
         >
-        <span class="form__error" id="error-input-about"></span>
+        <span class="form__error" data-id="error-input-about"></span>
         <button class="form__button" type="submit" id="edit-profile-submit-btn">Сохранить</button>
       </form>
       <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
@@ -75,23 +75,23 @@
         <input class="form__input"
           type="text"
           name="name"
-          id="input-title"
+          data-id="input-title"
           placeholder="Название"
           minlength="2"
           maxlength="30"
           required
           autocomplete="off"
         >
-        <span class="form__error" id="error-input-title"></span>
+        <span class="form__error" data-id="error-input-title"></span>
         <input class="form__input"
           type="url"
           name="link"
-          id="input-link"
+          data-id="input-link"
           placeholder="Ссылка на картинку"
           required
           autocomplete="off"
         >
-        <span class="form__error" id="error-input-link"></span>
+        <span class="form__error" data-id="error-input-link"></span>
         <button class="form__button" type="submit" id="add-card-submit-btn">Сохранить</button>
       </form>
       <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
@@ -112,7 +112,7 @@
     <div class="popup__container">
       <form class="form" name="comfirm-form">
         <h2 class="form__title form__title_confirm">Вы уверены?</h2>
-        <input class="form__input" type="hidden" name="_id" id="input-confirm">
+        <input class="form__input" type="hidden" name="_id" data-id="input-confirm">
         <button class="form__button" type="submit">Да</button>
       </form>
       <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>
@@ -126,12 +126,12 @@
         <input class="form__input"
           type="url"
           name="link"
-          id="input-link"
+          data-id="input-link"
           placeholder="Ссылка на картинку"
           required
           autocomplete="off"
         >
-        <span class="form__error" id="error-input-link"></span>
+        <span class="form__error" data-id="error-input-link"></span>
         <button class="form__button" type="submit" id="edit-avatar-submit-btn">Сохранить</button>
       </form>
       <button class="popup__close-btn" type="button" aria-label="Закрыть"></button>

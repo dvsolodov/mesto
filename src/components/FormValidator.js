@@ -15,7 +15,7 @@ export default class FormValidator {
 
   clearErrors = () => {
     this._inputElements.forEach((inputElement) => {
-      const errorElement = document.querySelector('#error-' + inputElement.id);
+      const errorElement = document.querySelector('[data-id=error-' + inputElement.dataset.id + ']');
       this._hideError(inputElement, errorElement);
     });
   }
@@ -31,7 +31,7 @@ export default class FormValidator {
 
   _setEventListeners = () => {
     this._inputElements.forEach((inputElement) => {
-      const errorElement = this._form.querySelector('#error-' + inputElement.id);
+      const errorElement = this._form.querySelector('[data-id=error-' + inputElement.dataset.id + ']');
       inputElement.addEventListener('input', () => {
         this._isValid(inputElement, errorElement);
         this.setSubmitBtnState();
