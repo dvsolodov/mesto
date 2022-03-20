@@ -83,6 +83,9 @@ const popupWithConfirmation = new PopupWithConfirmation({
         .then((result) => {
           card.deleteCard();
           popupWithConfirmation.card = null;
+        })
+        .catch(err => console.log(err))
+        .finally(() => {
           popupWithConfirmation.close();
         });
     }
@@ -96,6 +99,9 @@ const popupEditAvatar = new PopupWithForm({
       api.editAvatar(formData)
         .then((result) => {
           userInfo.setAvatar(result);
+        })
+        .catch(err => console.log(err))
+        .finally(() => {
           popupEditAvatarSubmitBtn.textContent = 'Сохранить';
           popupEditAvatar.close();
         });
@@ -110,6 +116,9 @@ const popupEditProfile = new PopupWithForm({
       api.editProfile(formData)
         .then((result) => {
           userInfo.setUserInfo(result);
+        })
+        .catch(err => console.log(err))
+        .finally(() => {
           popupEditProfileSubmitBtn.textContent = 'Сохранить';
           popupEditProfile.close();
         });
@@ -125,6 +134,9 @@ const popupAddCard = new PopupWithForm({
         .then((result) => {
           const cardElement = createCardElement(result);
           cardsList.addItem(cardElement);
+        })
+        .catch(err => console.log(err))
+        .finally(() => {
           popupAddCardSubmitBtn.textContent = 'Сохранить';
           popupAddCard.close();
         });
@@ -154,6 +166,7 @@ api.getProfile()
     userInfo.setUserInfo(data);
     userInfo.setAvatar(data);
   })
+  .catch(err => console.log(err));
 
 // initial cards rendering
 api.getInitialCards()
@@ -162,7 +175,8 @@ api.getInitialCards()
         cardsList.addItem(createCardElement(cardData));
       });
     }
-  );
+  )
+  .catch(err => console.log(err));
 
 popupEditAvatarOpenBtn.addEventListener('click', function (event) {
   formEditAvatarValidator.setSubmitBtnState(); // initial validation of form fields and setting button state

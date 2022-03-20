@@ -70,12 +70,14 @@ export default class Card {
       this._handleMinusLike(this.getId())
         .then((result) => {
           this._setLikesCounter(result.likes);
-        });
+        })
+        .catch(err => console.log(err));
     } else {
       this._handlePlusLike(this.getId())
         .then((result) => {
           this._setLikesCounter(result.likes);
-        });
+        })
+        .catch(err => console.log(err));
     }
   }
 }

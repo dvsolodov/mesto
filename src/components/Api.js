@@ -14,8 +14,7 @@ export default class Api {
 
   getProfile() {
     return fetch(this._baseUrl + this._paramProfile, {headers: this._headers})
-      .then((response) => this._checkResponse(response))
-      .catch(err => console.log(err));
+      .then((response) => this._checkResponse(response));
   }
 
   editProfile({name, about}) {
@@ -24,14 +23,12 @@ export default class Api {
         headers: this._headers,
         body: JSON.stringify({name, about})
       })
-      .then((response) => this._checkResponse(response))
-      .catch(err => console.log(err));
+      .then((response) => this._checkResponse(response));
   }
 
   getInitialCards() {
     return fetch(this._baseUrl + this._paramCards, {headers: this._headers})
-      .then((response) => this._checkResponse(response))
-      .catch(err => console.log(err));
+      .then((response) => this._checkResponse(response));
   }
 
   addCard({name, link}) {
@@ -40,8 +37,7 @@ export default class Api {
         headers: this._headers,
         body: JSON.stringify({name, link})
       })
-      .then((response) => this._checkResponse(response))
-      .catch(err => console.log(err));
+      .then((response) => this._checkResponse(response));
   }
 
   deleteCard(cardId) {
@@ -49,8 +45,7 @@ export default class Api {
         method: "DELETE",
         headers: this._headers
       })
-      .then((response) => this._checkResponse(response))
-      .catch(err => console.log(err));
+      .then((response) => this._checkResponse(response));
   }
 
   editAvatar(avatarObj) {
@@ -59,8 +54,7 @@ export default class Api {
         headers: this._headers,
         body: JSON.stringify({avatar: avatarObj.link})
       })
-      .then((response) => this._checkResponse(response))
-      .catch(err => console.log(err));
+      .then((response) => this._checkResponse(response));
   }
 
   addLike(cardId) {
@@ -68,9 +62,7 @@ export default class Api {
         method: "PUT",
         headers: this._headers
       })
-      .then((response) => this._checkResponse(response))
-      .catch(err => console.log(err));
-
+      .then((response) => this._checkResponse(response));
   }
 
   removeLike(cardId) {
@@ -78,8 +70,7 @@ export default class Api {
         method: "DELETE",
         headers: this._headers
       })
-      .then((response) => this._checkResponse(response))
-      .catch(err => console.log(err));
+      .then((response) => this._checkResponse(response));
   }
 
   _checkResponse(response) {
