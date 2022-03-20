@@ -1,6 +1,9 @@
 const popupEditAvatarOpenBtn = document.querySelector('#edit-avatar-popup-btn');
 const popupEditPrifileOpenBtn = document.querySelector('#edit-popup-btn');
 const popupAddCardOpenBtn = document.querySelector('#add-popup-btn');
+const popupEditProfileSubmitBtn = document.querySelector('#edit-profile-submit-btn');
+const popupAddCardSubmitBtn = document.querySelector('#add-card-submit-btn');
+const popupEditAvatarSubmitBtn = document.querySelector('#edit-avatar-submit-btn');
 
 const popupWithImageSelector = '#view-popup'
 const popupEditAvatarSelector = '#edit-avatar-popup';
@@ -26,6 +29,9 @@ const options = {
 };
 
 export {
+  popupEditAvatarSubmitBtn,
+  popupEditProfileSubmitBtn,
+  popupAddCardSubmitBtn,
   popupEditAvatarOpenBtn,
   popupEditPrifileOpenBtn,
   popupAddCardOpenBtn,

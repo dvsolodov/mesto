@@ -1,5 +1,8 @@
 import './index.css';
 import {
+  popupEditAvatarSubmitBtn,
+  popupEditProfileSubmitBtn,
+  popupAddCardSubmitBtn,
   popupEditAvatarOpenBtn,
   popupEditPrifileOpenBtn,
   popupAddCardOpenBtn,
@@ -80,8 +83,8 @@ const popupConfirmDeletion = new PopupConfirmDeletion({
         .then((result) => {
           card.deleteCard();
           popupConfirmDeletion.card = null;
+          popupConfirmDeletion.close();
         });
-      popupConfirmDeletion.close();
     }
   },
   popupConfirmSelector
@@ -89,11 +92,13 @@ const popupConfirmDeletion = new PopupConfirmDeletion({
 
 const popupEditAvatar = new PopupWithForm({
     submitCallback: (formData) => {
+      popupEditAvatarSubmitBtn.textContent = 'Сохранение...';
       api.editAvatar(formData)
         .then((result) => {
           userInfo.setAvatar(result);
+          popupEditAvatarSubmitBtn.textContent = 'Сохранить';
+          popupEditAvatar.close();
         });
-      popupEditAvatar.close();
     }
   },
   popupEditAvatarSelector
@@ -101,11 +106,13 @@ const popupEditAvatar = new PopupWithForm({
 
 const popupEditProfile = new PopupWithForm({
     submitCallback: (formData) => {
+      popupEditProfileSubmitBtn.textContent = 'Сохранение...';
       api.editProfile(formData)
         .then((result) => {
           userInfo.setUserInfo(result);
+          popupEditProfileSubmitBtn.textContent = 'Сохранить';
+          popupEditProfile.close();
         });
-      popupEditProfile.close();
     }
   },
   popupEditProfileSelector
@@ -113,12 +120,14 @@ const popupEditProfile = new PopupWithForm({
 
 const popupAddCard = new PopupWithForm({
     submitCallback: (formData) => {
+      popupAddCardSubmitBtn.textContent = 'Сохранение...';
       api.addCard(formData)
         .then((result) => {
           const cardElement = createCardElement(result);
           cardsList.addItem(cardElement);
+          popupAddCardSubmitBtn.textContent = 'Сохранить';
+          popupAddCard.close();
         });
-      popupAddCard.close();
     }
   },
   popupAddCardSelector
