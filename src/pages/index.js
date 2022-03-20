@@ -23,7 +23,7 @@ import Section from '../components/Section.js';
 import Card from '../components/Card.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import PopupConfirmDeletion from '../components/PopupConfirmDeletion.js';
+import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 
@@ -42,9 +42,9 @@ const createCardElement = (cardData) => {
         popupWithImage.open(imgData);
       },
       handleCardDeletion: (card) => {
-        popupConfirmDeletion.card = card;
-        popupConfirmDeletion.setDataInForm({confirm: card.getId()});
-        popupConfirmDeletion.open();
+        popupWithConfirmation.card = card;
+        popupWithConfirmation.setDataInForm({confirm: card.getId()});
+        popupWithConfirmation.open();
       },
       handleMinusLike: (cardId) => {
         return api.removeLike(cardId);
@@ -76,14 +76,14 @@ const userInfo = new UserInfo({
   avatarSelector: avatarSelector
 });
 
-const popupConfirmDeletion = new PopupConfirmDeletion({
+const popupWithConfirmation = new PopupWithConfirmation({
     submitCallback: () => {
-      const card = popupConfirmDeletion.card;
+      const card = popupWithConfirmation.card;
       api.deleteCard(card.getId())
         .then((result) => {
           card.deleteCard();
-          popupConfirmDeletion.card = null;
-          popupConfirmDeletion.close();
+          popupWithConfirmation.card = null;
+          popupWithConfirmation.close();
         });
     }
   },
@@ -137,7 +137,7 @@ popupEditAvatar.setEventListeners();
 popupAddCard.setEventListeners();
 popupWithImage.setEventListeners();
 popupEditProfile.setEventListeners();
-popupConfirmDeletion.setEventListeners();
+popupWithConfirmation.setEventListeners();
 
 const formEditAvatarValidator = new FormValidator(formSettings, popupEditAvatar.getForm());
 const formAddCardValidator = new FormValidator(formSettings, popupAddCard.getForm());
