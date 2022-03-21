@@ -52,7 +52,6 @@ const createCardElement = (cardData) => {
         } else {
           api.addLike(card.getId())
             .then((result) => {
-              console.log(result);
               card.setLikesCounter(result.likes);
             })
             .catch(err => console.log(err));
@@ -104,7 +103,7 @@ const popupEditAvatar = new PopupWithForm({
       popupEditAvatar.renderLoading('Сохранение...');
       api.editAvatar(formData)
         .then((result) => {
-          userInfo.setAvatar(result);
+          userInfo.setUserInfo(result);
         })
         .catch(err => console.log(err))
         .finally(() => {
@@ -169,7 +168,6 @@ formEditProfileValidator.enableValidation();
 Promise.all([api.getProfile(), api.getInitialCards()])
   .then(([userData, cardsData]) => {
     userInfo.setUserInfo(userData);
-    userInfo.setAvatar(userData);
     cardsList.renderItems(cardsData);
   })
   .catch(err => console.log(err));

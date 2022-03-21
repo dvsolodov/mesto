@@ -17,19 +17,7 @@ export default class UseInfo {
     this._name.textContent = dataObj.name;
     this._aboutUser.textContent = dataObj.about;
     this._userId = dataObj['_id'];
-  }
-
-  getAvatar() {
-    return {
-      avatar: this._avatar.src
-    }
-  }
-
-  setAvatar(userData) {
-    this._avatar.src = userData.avatar;
-
-    if (userData.name !== undefined) {
-      this._avatar.alt = userData.name;
-    }
+    this._avatar.src = dataObj.avatar;
+    this._avatar.alt = dataObj.name;
   }
 }
