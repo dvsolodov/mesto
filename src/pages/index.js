@@ -43,7 +43,7 @@ const createCardElement = (cardData) => {
         popupWithConfirmation.open();
       },
       handleLike: (card) => {
-        if (card.btnLike.classList.contains('photo__like-btn_active')) {
+        if (card.isLiked()) {
           api.removeLike(card.getId())
             .then((result) => {
               card.setLikesCounter(result.likes);
