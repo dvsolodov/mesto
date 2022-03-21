@@ -1,8 +1,5 @@
 import './index.css';
 import {
-  popupEditAvatarSubmitBtn,
-  popupEditProfileSubmitBtn,
-  popupAddCardSubmitBtn,
   popupEditAvatarOpenBtn,
   popupEditPrifileOpenBtn,
   popupAddCardOpenBtn,
