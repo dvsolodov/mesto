@@ -42,19 +42,21 @@ const createCardElement = (cardData) => {
         popupWithConfirmation.setDataInForm({confirm: card.getId()});
         popupWithConfirmation.open();
       },
-      handleMinusLike: (card) => {
-        api.removeLike(card.getId())
-          .then((result) => {
-            card._setLikesCounter(result.likes);
-          })
-          .catch(err => console.log(err));
-      },
-      handlePlusLike: (card) => {
-        api.addLike(card.getId())
-          .then((result) => {
-            card._setLikesCounter(result.likes);
-          })
-          .catch(err => console.log(err));
+      handleLike: (card) => {
+        if (card.btnLike.classList.contains('photo__like-btn_active')) {
+          api.removeLike(card.getId())
+            .then((result) => {
+              card.setLikesCounter(result.likes);
+            })
+            .catch(err => console.log(err));
+        } else {
+          api.addLike(card.getId())
+            .then((result) => {
+              console.log(result);
+              card.setLikesCounter(result.likes);
+            })
+            .catch(err => console.log(err));
+        }
       }
     },
     cardTemplateSelector
