@@ -88,11 +88,9 @@ const popupWithConfirmation = new PopupWithForm({
         .then((result) => {
           card.deleteCard();
           popupWithConfirmation.card = null;
+          popupWithConfirmation.close();
         })
         .catch(err => console.log(err))
-        .finally(() => {
-          popupWithConfirmation.close();
-        });
     }
   },
   popupConfirmSelector
@@ -104,11 +102,11 @@ const popupEditAvatar = new PopupWithForm({
       api.editAvatar(formData)
         .then((result) => {
           userInfo.setUserInfo(result);
+          popupEditAvatar.close();
         })
         .catch(err => console.log(err))
         .finally(() => {
           popupEditAvatar.renderLoading('Сохранить');
-          popupEditAvatar.close();
         });
     }
   },
@@ -121,11 +119,11 @@ const popupEditProfile = new PopupWithForm({
       api.editProfile(formData)
         .then((result) => {
           userInfo.setUserInfo(result);
+          popupEditProfile.close();
         })
         .catch(err => console.log(err))
         .finally(() => {
           popupEditProfile.renderLoading('Сохранить');
-          popupEditProfile.close();
         });
     }
   },
@@ -139,11 +137,11 @@ const popupAddCard = new PopupWithForm({
         .then((result) => {
           const cardElement = createCardElement(result);
           cardsList.addItem(cardElement);
+          popupAddCard.close();
         })
         .catch(err => console.log(err))
         .finally(() => {
           popupAddCard.renderLoading('Сохранить');
-          popupAddCard.close();
         });
     }
   },
