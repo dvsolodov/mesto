@@ -15,7 +15,7 @@ export default class FormValidator {
 
   clearErrors = () => {
     this._inputElements.forEach((inputElement) => {
-      const errorElement = document.querySelector('[data-id=error-' + inputElement.dataset.id + ']');
+      const errorElement = this._form.querySelector('[data-id=error-' + inputElement.dataset.id + ']');
       this._hideError(inputElement, errorElement);
     });
   }
