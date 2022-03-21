@@ -159,23 +159,13 @@ formEditAvatarValidator.enableValidation();
 formAddCardValidator.enableValidation();
 formEditProfileValidator.enableValidation();
 
-
-// initial profile rendering
-api.getProfile()
-  .then((data) => {
-    userInfo.setUserInfo(data);
-    userInfo.setAvatar(data);
+// initial profile and cards rendering
+Promise.all([api.getProfile(), api.getInitialCards()])
+  .then(([userData, cardsData]) => {
+    userInfo.setUserInfo(userData);
+    userInfo.setAvatar(userData);
+    cardsList.renderItems(cardsData);
   })
-  .catch(err => console.log(err));
-
-// initial cards rendering
-api.getInitialCards()
-  .then((data) => {
-      data.forEach((cardData) => {
-        cardsList.addItem(createCardElement(cardData));
-      });
-    }
-  )
   .catch(err => console.log(err));
 
 popupEditAvatarOpenBtn.addEventListener('click', function (event) {
