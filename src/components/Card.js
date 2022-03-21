@@ -67,17 +67,9 @@ export default class Card {
 
   _toggleLike() {
     if (this._btnLike.classList.contains('photo__like-btn_active')) {
-      this._handleMinusLike(this.getId())
-        .then((result) => {
-          this._setLikesCounter(result.likes);
-        })
-        .catch(err => console.log(err));
+      this._handleMinusLike(this)
     } else {
-      this._handlePlusLike(this.getId())
-        .then((result) => {
-          this._setLikesCounter(result.likes);
-        })
-        .catch(err => console.log(err));
+      this._handlePlusLike(this)
     }
   }
 }
