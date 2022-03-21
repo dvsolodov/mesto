@@ -95,14 +95,14 @@ const popupWithConfirmation = new PopupWithConfirmation({
 
 const popupEditAvatar = new PopupWithForm({
     submitCallback: (formData) => {
-      popupEditAvatarSubmitBtn.textContent = 'Сохранение...';
+      popupEditAvatar.renderLoading('Сохранение...');
       api.editAvatar(formData)
         .then((result) => {
           userInfo.setAvatar(result);
         })
         .catch(err => console.log(err))
         .finally(() => {
-          popupEditAvatarSubmitBtn.textContent = 'Сохранить';
+          popupEditAvatar.renderLoading('Сохранить');
           popupEditAvatar.close();
         });
     }
@@ -112,14 +112,14 @@ const popupEditAvatar = new PopupWithForm({
 
 const popupEditProfile = new PopupWithForm({
     submitCallback: (formData) => {
-      popupEditProfileSubmitBtn.textContent = 'Сохранение...';
+      popupEditProfile.renderLoading('Сохранение...');
       api.editProfile(formData)
         .then((result) => {
           userInfo.setUserInfo(result);
         })
         .catch(err => console.log(err))
         .finally(() => {
-          popupEditProfileSubmitBtn.textContent = 'Сохранить';
+          popupEditProfile.renderLoading('Сохранить');
           popupEditProfile.close();
         });
     }
@@ -129,7 +129,7 @@ const popupEditProfile = new PopupWithForm({
 
 const popupAddCard = new PopupWithForm({
     submitCallback: (formData) => {
-      popupAddCardSubmitBtn.textContent = 'Сохранение...';
+      popupAddCard.renderLoading('Сохранение...');
       api.addCard(formData)
         .then((result) => {
           const cardElement = createCardElement(result);
@@ -137,7 +137,7 @@ const popupAddCard = new PopupWithForm({
         })
         .catch(err => console.log(err))
         .finally(() => {
-          popupAddCardSubmitBtn.textContent = 'Сохранить';
+          popupAddCard.renderLoading('Сохранить');
           popupAddCard.close();
         });
     }
