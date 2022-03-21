@@ -20,7 +20,6 @@ import Section from '../components/Section.js';
 import Card from '../components/Card.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
-import PopupWithConfirmation from '../components/PopupWithConfirmation.js';
 import UserInfo from '../components/UserInfo.js';
 import Api from '../components/Api.js';
 
@@ -73,7 +72,7 @@ const userInfo = new UserInfo({
   avatarSelector: avatarSelector
 });
 
-const popupWithConfirmation = new PopupWithConfirmation({
+const popupWithConfirmation = new PopupWithForm({
     submitCallback: () => {
       const card = popupWithConfirmation.card;
       api.deleteCard(card.getId())
